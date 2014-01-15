@@ -1,0 +1,2646 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <title>修车帮安卓手机客户端应用</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="Sunday 26 October 2012 01:00 GMT" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="res/icons.css" />
+  <link rel="stylesheet" type="text/css" href="res/jq.ui.css?1.0.1" />
+  <link rel="stylesheet" type="text/css" href="res/index-320x480.css">
+  <link rel="stylesheet" type="text/css" href="res/usercenter.css">
+  <link rel="stylesheet" type="text/css" href="res/technical.css">
+  <link rel="stylesheet" type="text/css" href="res/case.css?1.0.4">
+  <link rel="stylesheet" type="text/css" href="res/setting.css">
+  <link rel="stylesheet" type="text/css" href="res/about.css">
+  <link rel="stylesheet" type="text/css" href="res/start.css">
+</head>
+<body>
+<div id="jQUi">
+
+<div id="header"></div>
+<div id="content">
+
+  <div id="main" class='panel' style="background:#0f8fd8; overflow:hidden;" data-footer="none">
+    <div id="start">
+      <p><img src="res/img/start.png"></p>
+      <p class="text">本应用版权所有归修车帮所有</p>
+    </div>
+  </div>
+
+  <div id="index" style=" background-color: rgb(54, 54, 54); overflow:hidden; " class='panel' data-footer="none">
+    <div id="wrapper">
+      <div class="column column-1">
+        <a id="anli"><h4>维修案例</h4></a>
+        <a id="lingbujian"><h4>设备·零部件</h4></a>
+        <a id="ucenter"><h4>个人中心</h4></a>
+      </div>
+      <div class="column column-2">
+        <a id="tech-help"><h4>技术求助</h4></a>
+        <a id="ziliao"><h4>维修资料</h4></a>
+        <a id="job"><h4>招聘</h4></a>
+        <a id="setting_module"><h4>设置</h4></a>
+        <a id="about_module"><h4>关于</h4></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="usercenter" class="panel" style="background:#f8f8f8;" data-footer="none">
+    <header>
+      <h1>个人中心</h1>
+      <button class="btn gohome" onclick="$.ui.loadContent('#index',false,false,'fade');$.ui.toggleHeaderMenu();">
+        <img src="res/img/home.png">
+      </button>
+      <a id="loginout" class="btn search">注销</a>
+      <!-- <a href="#login" class="btn search" data-transition="up">登录</a> -->
+    </header>
+
+    <div class="app-content">
+      <div class="usercenter-content">
+        <ul>
+          <li class="top-radius" id="to-base-information">
+            <a>基本信息</a>
+          </li>
+          <li id="to-systeminfo"><a>系统消息</a></li>
+          <li id="to-record"><a>积分记录</a></li>
+          <li id="to-rules" class="bottom-radius"><a>积分规则</a></li>
+          <!--         <li><a href="#resume-img-edit">修改头像</a></li>
+           -->
+        </ul>
+      </div>
+      <div class="usercenter-content">
+        <ul>
+          <!--<li class="top-radius"><a href="#my-resume">我的简历</a></li> -->
+          <li class="top-radius" id="top-my-cases"><a>我的案例</a></li>
+          <!--<li><a href="#my-equipment">我的设备·零部件</a></li>-->
+          <!--<li><a href="#my-material">我的维修资料</a></li>-->
+          <li id="top-my-seek"><a>我的求助</a></li>
+          <li id="top-my-job"><a>我的招聘</a></li>
+          <li id="top-friend-list"><a>我的好友</a></li>
+          <li id="top-my-collection" class="bottom-radius"><a>我的收藏</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- END #usercenter -->
+
+  <div id="login" class="panel" data-footer="none">
+    <header>
+      <h1>登录</h1>
+      <button class="btn gohome" onclick="$.ui.loadContent('#index');$.ui.toggleHeaderMenu();">
+        <img src="res/img/home.png">
+      </button>
+      <a href="#register" class="btn search" data-transition="up">注册</a>
+    </header>
+    <div class="app-content">
+      <div class="usercenter-content">
+        <ul>
+          <li class="top-radius login">
+            <input type="text" id="username" name="username" class="jq-ui-forms" placeholder="请输入用户名或者邮箱"/>
+          </li>
+          <li class="bottom-radius login">
+            <input id="password" class="jq-ui-forms" type="password" placeholder="请输入密码"/>
+          </li>
+        </ul>
+      </div>
+      <div class="login-submit">
+        <input class="input" type="submit" value="登录" id="loginSubmit">
+      </div>
+      <span class="other-text">使用合作伙伴账号登录：</span>
+      <div class="other-id" id="wb_connect_btn">
+        <a href="#" class="other-sina">新浪微博</a>
+        <a href="#" class="other-qq">QQ</a>
+      </div>
+    </div>
+  </div>
+  <!-- END #login and register -->
+
+  <div id="register" class="panel" data-footer="none">
+    <header>
+      <h1>用户注册</h1>
+      <button class="btn gohome" onclick="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </button>
+      <a href="#login" class="btn search" data-transition="down">登陆</a>
+    </header>
+    <div class="app-content">
+      <div class="usercenter-content">
+        <ul>
+          <li class="top-radius login">
+            <input type="text" id="re_username" name="username" class="jq-ui-forms" placeholder="请输入用户名"/>
+          </li>
+          <li class="login">
+            <input type="text" id="re_email" name="email" class="jq-ui-forms" placeholder="请填写邮箱"/>
+          </li>
+          <li class="login">
+            <input type="password" id="re_password" name="passwd" class="jq-ui-forms" placeholder="请输入密码"/>
+          </li>
+          <li class="bottom-radius login">
+            <input type="password" id="re_reg_password" name="passwd" class="jq-ui-forms" placeholder="请再次输入密码"/>
+          </li>
+        </ul>
+      </div>
+      <!--<div class="auto-login"><input name="" type="checkbox" checked="checked">已经阅读注册条款</div>-->
+      <div class="login-submit"><input class="input" type="submit" value="确认注册" id="registerSubmit"></div>
+    </div>
+  </div>
+  <!-- END #register -->
+
+
+  <div id="information" class="panel" data-footer="none">
+    <header id="my-header">
+      <!--<h1>个人基本信息</h1>-->
+      <!--<a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>-->
+      <!--<a href="#information-edit" class="btn search">修改</a>-->
+    </header>
+    <div class="app-content">
+      <div class="usercenter-content" id="usercenter-content">
+        <!--         <ul>
+                  <li class="top-radius"><p><span class="resume-edit-left">姓名</span><span class="resume-edit">刘成峰</span></p></li>
+                  <li>
+                    <p><span class="resume-edit-left">性别</span><span class="resume-edit">男</span></p>
+                  </li>
+                  <li>
+                    <p><span class="resume-edit-left">生日</span><span class="resume-edit">2012-12-21</span></p>
+                  </li>
+                  <li>
+                    <p><span class="resume-edit-left">居住地</span><span class="resume-edit">北京昌平区</span></p>
+                  </li>
+                  <li>
+                    <p><span class="resume-edit-left">手机</span><span class="resume-edit">13811989752</span></p>
+                  </li>
+                  <li>
+                    <p><span class="resume-edit-left">E-mail</span><span class="resume-edit">liuchengfeng0304@126.com</span></p>
+                  </li>
+                  <li class="bottom-radius">
+                    <p><span class="resume-edit-left">个人介绍</span><span class="resume-edit" contenteditable="true">说些什么呢！！！说些什么呢！！！说些什么呢！！！说些什么呢！！！</span></p>
+                  </li>
+                </ul>  -->
+      </div>
+    </div>
+  </div>
+
+  <div id="resume" class="panel">
+    <header>
+      <h1>个人简历</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#resume-edit" class="btn search">修改</a>
+    </header>
+    <div class="app-content">
+      <div class="resume-content">
+        <ul>
+          <li style="margin-bottom:30px;">
+            <span class="resume-img"><img src="res/img/aaaa.jpg" /><a href="#resume-img-edit">修改头像</a></span>
+            <p><span class="title">刘成峰</span><span class="developer">男<br/>2012年12月21日<br/></span></p>
+          </li>
+        </ul>
+        <p><span><strong>居住地</strong></span><span class="resume-right">北京－海淀区上地</span></p>
+        <p><span><strong>户口</strong></span><span class="resume-right">河北省</span></p>
+        <p><span><strong>地址</strong></span><span class="resume-right">河北</span></p>
+        <p><span><strong>手机</strong></span><span class="resume-right">1381234567890</span></p>
+        <p><span><strong>E-mail</strong></span><span class="resume-right">liuchengfeng0304@126.com</span></p>
+        <p><span><strong>其它</strong></span><span class="resume-right">其它描述其它描述其它描述其它描述其它描述其它描述其它描述其它描述其它描述其它描述其它描述其它描述其它描述</span></p>
+      </div>
+    </div>
+  </div>
+  <!-- END #resume -->
+
+  <div id="integral-record" class="panel" data-footer="none">
+    <header>
+      <h1>我的积分记录</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <div class="integral-name">
+        <div class="div-one">动作名称</div>
+        <div class="div-two">积分</div>
+        <div class="div-three">奖励时间</div>
+      </div><!-- END 筛选菜单 -->
+    </header>
+    <div class="content_top">
+      <div class="resume-content" style="padding-top:0px !important;">
+        <ul id="score-list">
+
+          <!--<li>-->
+          <!--<div class="divone">每天签到</div>-->
+          <!--<div class="divtwo">+5</div>-->
+          <!--<div class="divthree">2013-01-29 15:24</div>-->
+          <!--</li>-->
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- END #积分记录 -->
+
+  <div id="integral-rules" class="panel" data-footer="none">
+    <header>
+      <h1>积分规则</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <div class="integral-name">
+        <div class="div-rules-one">动作名称</div>
+        <div class="div-rules-two">周期范围</div>
+        <div class="div-rules-two">最多次数</div>
+        <div class="div-rules-three">积分</div>
+      </div><!-- END 筛选菜单 -->
+    </header>
+    <div class="content_top">
+      <div class="resume-content" style="padding-top:0px !important;">
+        <ul id="rules-list">
+
+          <!--<li>-->
+          <!--<div class="divone-list">发布原创微博</div>-->
+          <!--<div class="divtwo-list">不限周期</div>-->
+          <!--<div class="divtwo-list">无限制</div>-->
+          <!--<div class="divthree-list">+10</div>-->
+          <!--</li>-->
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- END #integral-rules 积分规则 -->
+
+  <div id="personal-homepage" class="panel" data-footer="none">
+    <header>
+      <h1>个人主页</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#usercenter" class="btn search"><img src="res/img/home.png"></a>
+    </header>
+
+    <div class="resume-content my-resume" id="homepage-base" style=" padding-top:10px !important; padding-bottom:0px !important;">
+      <!--       <ul>
+              <li>
+                <span class="resume-img"><a href="#personal-homepage"><img src="res/img/auto-car-one.png" /></a></span>
+                <p><span class="title">刘成峰</span><span class="developer">男&nbsp;&nbsp;&nbsp;2012年12月21日<br/></span>
+                <a href="#my-resume-edit" style="float:left;"><button id="#" class="button" >编辑</button></a></p>
+              </li>
+              <div class="my-resume" style="padding:0 10px !important; height:70px; border-bottom:1px solid #ddd;">
+                <a class="homepage-menu" href="#information">详细<br>资料</a>
+                <a class="homepage-menu" href="#"><span>6000</span><br>关注</a>
+                <a class="homepage-menu" href="#"><span>10800</span><br>粉丝</a>
+                <a class="homepage-menu" href="#my-collection"><span>20</span><br>收藏</a>
+              </div>
+            </ul> -->
+    </div>
+    <div class="weibo_number">1321条微博</div>
+    <div class="system-list" id="friend-list-home">
+      <ul>
+        <!--       <li>
+                <img src="res/img/aaaa.jpg" /><p><span class="developer">我的求助我的求助我的求助我的求助我的求助我的求助我的求助我的求助</span></p>
+              </li>   -->
+      </ul>
+    </div>
+  </div>
+  <!-- END #personal-homepage -->
+
+  <div id="information-edit" class="panel" style="background:#f8f8f8;" data-footer="none">
+    <header>
+      <h1>修改个人信息</h1>
+      <a class="btn goback" id="to-user-information">
+        <img src="res/img/goback.png">
+      </a>
+      <a id="edit-information" class="btn search">保存</a>
+    </header>
+    <div class="app-content">
+      <div class="usercenter-content" id="edit-usercenter-content">
+        <!-- <ul>
+        <li class="top-radius"><p><span class="resume-edit-left">姓名</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p></li>
+        <li>
+          <p><span class="resume-edit-left">性别</span>
+          <span class="resume-edit">
+            <label>
+            <input type="radio" style="width:16px !important;" name="RadioGroup1" value="单选" id="RadioGroup1_0">
+            男</label>
+            <label>
+            <input type="radio" style="width:16px !important;" name="RadioGroup1" value="单选" id="RadioGroup1_1">
+            女</label>
+          </span></p>
+        </li>
+        <li>
+          <p><span class="resume-edit-left">生日</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+        </li>
+        <li>
+          <p><span class="resume-edit-left">居住地</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+        </li>
+        <li>
+          <p><span class="resume-edit-left">手机</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+        </li>
+        <li>
+          <p><span class="resume-edit-left">E-mail</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+        </li>
+        <li class="bottom-radius"><p><span class="resume-edit-left">个人介绍</span><span class="resume-edit" contenteditable="true"><textarea name="" cols="" rows=""></textarea></span></p></li>
+        </ul>  -->
+      </div>
+
+    </div>
+  </div>
+  <!-- END #information-edit -->
+
+
+  <div id="system" class="panel" data-footer="none">
+    <header>
+      <h1>系统消息</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#system-edit" class="btn search">编辑</a>
+    </header>
+    <div class="system-list">
+      <ul>
+        <li>
+          <a href="#system-list-text">恭喜！你的微博等级已经升级到1级啦，赶紧去晒等级或者找个好友PK试试吧</a>
+        </li>
+        <li>
+          <a href="#system-list-text">恭喜！你的微博等级已经升级到1级啦，赶紧去晒等级或者找个好友PK试试吧</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- END #system -->
+
+  <div id="system-list-text" class="panel" data-footer="none">
+    <header>
+      <h1>系统消息</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+    </header>
+    <div class="system-list">
+      <p>恭喜！你的微博等级已经升级到1级啦，赶紧去晒等级或者找个好友PK试试吧;亲，你只需再连续登录2天，即可获得微博会员免费体验资格，一定要连续登录哦！微博会员体验资格可享有快速涨粉、皇冠标识、特权模板、微博置顶、专属客服等稀有特权！戴上尊贵的会员皇冠，玩微博倍儿有面子！</p>
+    </div>
+  </div>
+  <!-- END #system-edit -->
+
+  <div id="my-case" class="panel" data-footer="none">
+    <header>
+      <h1>我的案例</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#my-case-edit" class="btn search">编辑</a> -->
+    </header>
+    <div class="friend-list">
+      <ul>
+        <!--        <li>
+                <img src="res/img/aaaa.jpg"  />
+                <p><span class="title">我的案例</span><span class="developer">我的案例我的案例我的案例我的案例我的案例我的案例</span></p>
+              </li>   -->
+      </ul>
+    </div>
+  </div>
+  <!-- END #my-case -->
+
+
+  <div id="my-collection-case" class="panel" data-footer="none">
+    <header>
+      <h1>收藏-维修案例</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#my-case-edit" class="btn search">编辑</a> -->
+    </header>
+    <div class="friend-list">
+      <ul id="friend-list-ul">
+         <!--<li>-->
+            <!--<img src="res/img/aaaa.jpg"  />-->
+            <!--<p><span class="title">我的案例</span><span class="developer">我的案例我的案例我的案例我的案例我的案例我的案例</span></p>-->
+          <!--</li>-->
+      </ul>
+    </div>
+  </div>
+  <!-- END #my-case -->
+
+
+  <div id="my-equipment" class="panel">
+    <header>
+      <h1>我的设备·零部件</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#my-equipment-edit" class="btn search">编辑</a> -->
+    </header>
+    <div class="friend-list">
+      <ul>
+        <!--       <li>
+                <img src="res/img/aaaa.jpg"  />
+                <p><span class="title">我的设备零部件</span><span class="developer">我的设备零部件我的设备零部件我的设备零部件</span></p>
+              </li>  -->
+      </ul>
+    </div>
+  </div>
+  <!-- END #my-equipment -->
+
+  <div id="friend-list" class="panel" data-footer="none">
+    <header>
+      <h1>好友列表</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#personal-homepage" class="btn search">临时</a> -->
+    </header>
+    <div  id="friend-main" class="friend-list">
+      <ul>
+        <!--         <li>
+                  <img src="res/img/aotuo.jpg" />
+                  <p><span class="title">好友名称好友名称</span><span class="developer">好友内容好友内容好友内容</span></p>
+                </li> -->
+      </ul>
+    </div>
+  </div>
+  <!-- END #friend-list -->
+
+  <!-- 粉丝列表 -->
+  <div id="fans-list" class="panel" style="background:#f1f1f1;" data-footer="none">
+    <header>
+      <h1>粉丝</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#personal-homepage" class="btn search">临时</a> -->
+    </header>
+    <div  id="friend-main-fanslist" class="friend-list">
+      <ul>
+        <!--         <li>
+                <img src="res/img/aotuo.jpg" />
+                <p><span class="title">好友名称好友名称</span><span class="developer">好友内容好友内容好友内容</span></p>
+              </li> -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- 关注列表 -->
+  <div id="following-list" class="panel" style="background:#f1f1f1;" data-footer="none">
+    <header>
+      <h1>关注</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#personal-homepage" class="btn search">临时</a> -->
+    </header>
+    <div id="friend-main-followinglist" class="friend-list">
+      <ul>
+        <!--         <li>
+                <img src="res/img/aotuo.jpg" />
+                <p><span class="title">好友名称好友名称</span><span class="developer">好友内容好友内容好友内容</span></p>
+              </li> -->
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="my-job" class="panel" style="background:#f8f8f8;" data-footer="none">
+    <header>
+      <h1>我的招聘</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#login" class="btn search" data-transition="up">登录</a> -->
+    </header>
+    <div class="app-content">
+      <div class="usercenter-content">
+        <ul>
+          <li class="top-radius"><a href="#interview">我的面试邀请</a></li>
+          <li class="bottom-radius"><a href="#record">我的职位申请</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- END #my-collection -->
+
+  <div id="interview" class="panel" data-footer="none">
+    <header>
+      <h1>面试邀请</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#login" class="btn search" data-transition="up">登录</a> -->
+    </header>
+
+    <div class="system-list">
+
+      <ul id="interview-list">
+        <!--           <li>
+                    <a href="#interview-detail"><strong>北京燕之庐网络技术有限公司</strong><br/>刘成峰你好！北京燕之庐网络技术有限公司邀请您01月09日18：13来面试，海淀区上地十街辉煌国际5号楼910室，13811988888，常先生<br/><span>2013-01-10</span></a>
+                  </li> -->
+      </ul>
+    </div>
+  </div>
+  <!-- END #interview -->
+
+  <div id="record" class="panel" data-footer="none">
+    <header>
+      <h1>职位申请记录</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#login" class="btn search" data-transition="up">登录</a> -->
+    </header>
+
+    <div class="system-list" id="apply-position-list">
+      <!--         <p class="system-tip"><strong>您一共申请过3个职位</strong><br/>投递简历，收获更多机会！</p> -->
+      <ul>
+        <!--           <li>
+                    <a href="#record-detail"><strong>配件管理</strong><br/>3年工作经验，良好的沟通能力及团队能力...<span class="folat_r">2013-01-10</span></a>
+                  </li> -->
+      </ul>
+    </div>
+  </div>
+  <!-- END #record -->
+
+  <div id="interview-detail" class="panel" data-footer="none">
+    <header>
+      <h1>公司介绍</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+    </header>
+    <div class="resume-content" id="interview-company-info" style="padding:10px 0 !important;">
+      <!--        <ul>
+               <li style="margin-bottom:10px;">
+                  <div class="app-content" style="font-size:12px;">
+                  <h1 style="color:#333;">北京燕之庐网络技术有限公司</h1>
+                  <span>发布时间：2013-01-06</span><span style="float:right;">已有2432人浏览</span>
+                 </div>
+               </li>
+             </ul>
+             <div class="detail-main">
+               <div class="app-content">
+                 <p><span class="color">人数</span>：3人</p>
+                 <p><span class="color">年龄</span>：25</p>
+                 <p><span class="color">性别</span>：不限</p>
+                 <p><span class="color">职位</span>：机修工</p>
+                 <p><span class="color">工作地点</span>：北京</p>
+                 <p><span class="color">学历要求</span>：大专/大专以上</p>
+                 <p><span class="color">薪资</span>：0元</p>
+                 <p><strong>详细信息</strong></p>
+               </div>
+             </div>
+             <div class="app-content">
+               <p>北京某某有限公司PHP工程师北京某某有限公司PHP工程师北京某某有限公司PHP工程师北京某某有限公司PHP工程师北京某某有限公司PHP工程师北京某某有限公司PHP工程师北京某某有限公司PHP工程师北京某某有限公司PHP工程师北京某某有限公司PHP工程师北京某某有限公司PHP工程师</p>
+             </div>     -->
+    </div>
+  </div>
+  <!--END　#position-resume 面试邀请详情-->
+
+  <div id="record-detail" class="panel" data-footer="none">
+    <header>
+      <h1>职位详情</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+    </header>
+    <div class="resume-content" id="one-pisition-info" style="padding:10px 0 !important;">
+      <!-- 职位内容详情 -->
+    </div>
+  </div>
+  <!--END　#position-resume 招聘职位简历-->
+
+  <div id="my-collection" class="panel" style="background:#f8f8f8;" data-footer="none">
+    <header>
+      <h1>我的收藏</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <!-- <a href="#login" class="btn search" data-transition="up">登录</a> -->
+    </header>
+    <div class="app-content">
+      <div class="usercenter-content">
+        <ul>
+          <li class="top-radius">
+            <a href="#my-collection-case">维修案例</a>
+          </li>
+          <li class="bottom-radius">
+            <a href="#my-collection-help">技术求助</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- END #my-collection -->
+
+  <div id="my-help" class="panel" data-footer="none">
+    <header>
+      <h1>我的求助</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#my-help-edit" class="btn search">编辑</a> -->
+    </header>
+    <div class="tech-list"  id="seekhelp-main">
+      <ul>
+      </ul>
+    </div>
+  </div>
+  <!-- END #my-help -->
+
+  <div id="my-collection-help" class="panel" data-footer="none">
+    <header>
+      <h1>收藏-技术求助</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <!-- <a href="#my-help-edit" class="btn search">编辑</a> -->
+    </header>
+    <div class="tech-list"  id="seek-help-main">
+      <ul>
+      </ul>
+    </div>
+  </div>
+  <!-- END #my-help -->
+
+  <div id="help-detail" class="panel" >
+    <header>
+      <h1>求助正文</h1>
+      <button class="btn goback" onclick="javascript:$.ui.goBack();"><img src="res/img/goback.png"></button>
+      <!-- <a href="#answer" class="btn search">回复</a> -->
+    </header>
+    <!-- END technical header -->
+    <div class="che-list-main">
+      <!-- 我的求助详情正文部分，用的是模板引擎中的内容 -->
+    </div>
+    <!-- end 技术详细 footer -->
+  </div>
+  <!-- end #help-detail -->
+
+  <div title='技术求助' id="technical-main" class="panel" data-footer="navbar2">
+    <header>
+      <h1>技术求助</h1>
+      <button class="btn gohome" onclick="$.ui.loadContent('#index',false,false,'fade');$.ui.toggleHeaderMenu();"><img src="res/img/home.png"></button>
+      <a id="publishseek"  class="btn publish-menu">发布求助</a>
+      <!-- <button class="btn gohome" id="publishseek"><img src="res/img/home.png"></button> -->
+      <div class="tech-name">
+        <div class="div-one"><a href="#filter-brand">车系</a></div>
+        <div class="div-one"><a href="#filter-part">部位</a></div>
+        <div class="div-one"><a href="#transmission-list">变速箱</a></div>
+        <div class="div-two"><a href="#filter-more">更多</a></div>
+      </div><!-- END 筛选菜单 -->
+    </header>
+
+    <div class="content_top">
+      <div id="tech-main">
+        <div class="tech-list" id="tech-list-main">
+          <ul>
+            <!-- 求助主界面列表 -->
+          </ul>
+        </div>
+      </div>
+      <div class="load-more"><p>查看更多</p></div>
+    </div>
+  </div>
+  <!-- END 技术求助 pannel -->
+
+  <div id="tech-detail" class="panel" data-footer="none">
+
+    <header>
+      <h1>求助信息详情</h1>
+      <button class="btn goback" onclick="javascript:$.ui.goBack();"><img src="res/img/goback.png"></button>
+      <a class="collection-a"></a><a id="todiscuss" class="btn search">0回复</a>
+    </header>
+    <!-- END technical header -->
+    <div class="che-list-main" id="tech-detail-info">
+      <div class="current"><p><img src="res/img/loading-a.gif"><span>正在加载中...</span></p></div>
+      <!-- 详情模板位置 -->
+    </div>
+    <!-- end 技术详细 footer -->
+  </div>
+  <!-- end #tech-detail -->
+
+  <div id="answer-list" class="panel" data-footer="none">
+    <header>
+      <h1>回复列表</h1>
+      <button class="btn goback" onclick="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </button>
+      <a class="btn search" id="toTechDetail">原文</a>
+    </header>
+    <div id="comment-main">
+
+      <div class="tech-answer-list">
+        <ul>
+          <li class="question-li" id="question-title">
+            <!--<span class="title">求助主题： 大众 迈腾 2013年<br/></span>-->
+            <!--<div class="question-main-li"><img src="res/img/aaaa.jpg" />昵称昵称昵称昵称&nbsp;|&nbsp;10分钟前</div>-->
+          </li>
+        </ul>
+      </div>
+
+      <div id="comment-list">
+
+      </div>
+      <!--<div class="answer-list">-->
+
+      <!--<div class="tech-answer">-->
+      <!--<div class="tech-answer-right">-->
+      <!--<img src="res/img/aotuo.jpg" />-->
+      <!--</div>-->
+      <!--<div class="tech-answer-left">-->
+      <!--<div class="right-sj"></div>-->
+      <!--<div class="tech-question-left-m">-->
+      <!--<li>回答的内容回答的内容回答的内容</li>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="tech-answer">-->
+      <!--<div class="tech-answer-right" style="float:left;">-->
+      <!--<img src="res/img/aotuo.jpg" />-->
+      <!--</div>-->
+      <!--<div class="tech-question-left">-->
+      <!--<div class="left-sj"></div>-->
+      <!--<div class="tech-answer-left-m">-->
+      <!--<li>追问的内容追问的内容追问的内容</li>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <!--<div style="padding:10px 0 0 !important;">-->
+      <!--<div class="comment-button">-->
+      <!--<span><button>设为满意回答</button></span>-->
+      <!--<button>继续追问</button>-->
+      <!--</div>-->
+      <!--<div style="display:none;">-->
+      <!--<textarea name="" style="width:100%; min-height:50px;"></textarea>-->
+      <!--<div class="comment-button"><button>提交</button></div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+    </div>
+  </div>
+  <!-- end #answer-list -->
+
+  <div id="answer" class="panel" data-footer="none">
+    <header>
+      <h1>求助回答</h1>
+      <button class="btn search" style="float:left;" onclick="$.ui.goBack()">取消</button>
+      <button class="btn search" id="reply_seek_button">回复</button>
+    </header>
+
+    <div class="tech-reply">
+      <textarea name="reply_content" placeholder="请输入回答内容" id="reply_content" class='jq-ui-forms'></textarea>
+    </div>
+  </div><!-- end #answer -->
+
+
+  <div id="tech-share" class="panel" data-footer="none">
+    <header>
+      <h1>求助分享</h1>
+      <button class="btn search" style="float:left;" onclick="location.href='technical.html';">取消</button>
+      <button class="btn search" onclick="location.href='technical.html';">发送</button>
+    </header>
+
+    <div class="tech-reply">
+      <textarea name="web" class='jq-ui-forms'></textarea>
+    </div>
+  </div><!-- end #tech-share -->
+
+  <div id="filter-brand" class="panel"  data-footer="none" style="overflow:hidden;">
+    <header>
+      <h1>汽车 品牌</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <a href="#technical-main" class="btn search">
+        <img src="res/img/help-icon.png">
+      </a>
+    </header><!-- END customer header -->
+
+    <div id="listControl" style="margin-left:auto;margin-right:auto;position:absolute;top:0px;bottom:0px;left:0px;overflow:hidden;width:100%;padding-bottom:10px;">
+      <div id="contentDIV_container" style="width:100%;height:100%; background-color:white;overflow:hidden;">
+        <div id="contentDIV" style='color:black; overflow:hidden;'>
+          <div class="brand-list" id="filter-brand-list">
+            <!--<div class="tableHeader" id="itm_anchor_A">A</div>
+
+              <li>
+                <img src="res/img/aodi.jpg">
+                <p>奥迪</p>
+              </li>
+              <li>
+                  <img src="res/img/aodi.jpg">
+                  <p>奥迪</p>
+              </li> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("load",function(){
+        $("#contentDIV").scroller({useJsScroll:true});
+        $("#contentDIV").alphatable($("#contentDIV").scroller(),{listCssClass:"tableListContainer",prefix:"itm_anchor_"});
+
+      },false);
+    </script>
+  </div>
+
+  <div id="brand-list" class="panel" data-footer="none">
+    <header>
+      <h1>品牌车系</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <a href="#technical-main" class="btn search">
+        <img src="res/img/help-icon.png">
+      </a>
+    </header>
+    <!-- END technical header -->
+
+    <div class="brand">
+      <div class="chexi-names-list">
+        <!--         <a href="#years-list">奥迪a4</a>
+                <a href="#years-list">奥迪a4</a> -->
+      </div>
+    </div><!-- END brand item list -->
+  </div>
+  <!-- END 技术求助 品牌车系名称-列表 pannel -->
+
+  <div id="case-filter-brand" class="panel"  data-footer="none" style="overflow:hidden;">
+    <header>
+      <h1>汽车 品牌</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <a href="#case-home" class="btn search">
+        <img src="res/img/cases-icon.png">
+      </a>
+    </header><!-- END customer header -->
+
+    <div id="CaselistControl" style="margin-left:auto;margin-right:auto;position:absolute;top:0px;bottom:0px;left:0px;overflow:hidden;width:100%;padding-bottom:10px;">
+      <div id="CasecontentDIV_container" style="width:100%;height:100%; background-color:white;overflow:hidden;">
+        <div id="CasecontentDIV" style='color:black; overflow:hidden;'>
+          <div class="brand-list" id="case-filter-brand-list">
+            <!--<div class="tableHeader" id="itm_anchor_A">A</div>
+
+              <li>
+                <img src="res/img/aodi.jpg">
+                <p>奥迪</p>
+              </li>
+              <li>
+                  <img src="res/img/aodi.jpg">
+                  <p>奥迪</p>
+              </li> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("load",function(){
+        $("#CasecontentDIV").scroller({useJsScroll:true});
+        $("#CasecontentDIV").alphatable($("#CasecontentDIV").scroller(),{listCssClass:"tableListContainer",prefix:"Case_itm_anchor_"});
+
+      },false);
+    </script>
+  </div>
+
+  <div id="case-brand-list" class="panel" data-footer="none">
+    <header>
+      <h1>品牌车系</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <a href="#case-home" class="btn search">
+        <img src="res/img/cases-icon.png">
+      </a>
+    </header>
+    <!-- END technical header -->
+
+    <div class="brand">
+      <div class="chexi-names-list">
+        <!--         <a href="#years-list">奥迪a4</a>
+                <a href="#years-list">奥迪a4</a> -->
+      </div>
+    </div><!-- END brand item list -->
+  </div>
+  <!-- END 案例 品牌车系名称-列表 pannel -->
+
+  <div id="case-filter-part" class="panel" data-footer="none">
+    <header>
+      <h1>故障部位</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <a href="#case-home" class="btn search">
+        <img src="res/img/cases-icon.png">
+      </a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="0" style="color: #2391cf">全部故障</li>
+        <li data-id="1">发动机</li>
+        <li data-id="2">变速箱</li>
+        <li data-id="3">转向系统</li>
+        <li data-id="4">悬架系统</li>
+        <li data-id="5">空调系统</li>
+        <li data-id="6">车身电器</li>
+        <li data-id="7">制动系统</li>
+        <li data-id="8">其他</li>
+      </div>
+    </div>
+  </div>
+  <!-- END 技术求助 故障部位 pannel -->
+
+  <div id="case-filter-order" class="panel" data-footer="none">
+    <header>
+      <h1>排序</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <a href="#case-home" class="btn search">
+        <img src="res/img/cases-icon.png">
+      </a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-val="hits">点击量</li>
+        <li data-val="comment">评论数</li>
+        <li data-val="copy">转发数</li>
+      </div>
+    </div>
+  </div>
+
+  <div id="case-filter-more" class="panel" data-footer="none">
+    <header>
+      <h1>更多条件</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <a href="#case-home" class="btn search">
+        <img src="res/img/cases-icon.png">
+      </a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="to_year">年份</li>
+        <li data-id="to_cc">排量</li>
+        <li data-id="to_transmission">变速箱</li>
+      </div>
+    </div>
+  </div>
+
+  <div id="case-filter-year" class="panel" data-footer="none">
+    <header>
+      <h1>排序</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#case-home" class="btn search"><img src="res/img/cases-icon.png"></a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="0" style="color: #2391cf">全部年份</li>
+        <li data-id="2003">2003年</li>
+        <li data-id="2004">2004年</li>
+        <li data-id="2005">2005年</li>
+        <li data-id="2006">2006年</li>
+        <li data-id="2007">2007年</li>
+        <li data-id="2008">2008年</li>
+        <li data-id="2009">2009年</li>
+        <li data-id="2010">2010年</li>
+        <li data-id="2011">2011年</li>
+        <li data-id="2012">2012年</li>
+      </div>
+    </div>
+  </div>
+
+  <div id="case-filter-cc" class="panel" data-footer="none">
+    <header>
+      <h1>排序</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#case-home" class="btn search"><img src="res/img/cases-icon.png"></a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="0" style="color: #2391cf">全部排量</li>
+        <li data-id="1">1.3L以下</li>
+        <li data-id="2">1.3L - 1.6L</li>
+        <li data-id="3">1.6L - 2.0L</li>
+        <li data-id="4">2.0L - 3.0L</li>
+        <li data-id="5">3.0L - 5.0L</li>
+        <li data-id="6">5.0L以上</li>
+      </div>
+    </div>
+  </div>
+
+  <div id="case-filter-transmission" class="panel" data-footer="none">
+    <header>
+      <h1>排序</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#case-home" class="btn search"><img src="res/img/cases-icon.png"></a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="0" style="color: #2391cf">全部变速箱</li>
+        <li data-id="1">手动</li>
+        <li data-id="2">半自动</li>
+        <li data-id="3">自动</li>
+        <li data-id="4">手自一体</li>
+        <li data-id="5">无极变速</li>
+        <li data-id="6">双离合</li>
+      </div>
+    </div>
+  </div>
+
+  <div id="cases-detail" class="panel" data-footer="navbar-case">
+    <header>
+      <h1>案例详情</h1>
+      <button class="btn goback" id="detail-back">
+        <img src="res/img/goback.png">
+      </button>
+      <button class="btn search p_l" id="jumpComment" data-id="">评</button>
+    </header>
+    <!-- END customer header -->
+
+    <div class="che-list-main" id="che-list-main">
+      <div class="current"><p><img src="res/img/loading-a.gif"><span>正在加载中...</span></p></div>
+    </div>
+
+    <!-- end 案例详细 footer -->
+  </div>
+  <!-- end #cases-detail -->
+
+  <div id="photo-list" class="panel" data-footer="none" style="background:#222;overflow:hidden;">
+    <header>
+      <h1 id="pageTitle">3/8</h1>
+      <button class="btn goback" id="photogodetail"><img src="res/img/goback.png"></button>
+      <!--<button class="btn title-number" id="jumpComment" href='./case.html#pinglun' data-id="">0</button>-->
+    </header>
+    <!-- END header -->
+
+    <div class="photo-list">
+      <!-- 图片切换 -->
+    </div>
+    <input type="hidden" id="hiddenPhotoCasesId" name="cases_id"/>
+    <input type="hidden" id="hiddenPhotoGallery" name="gallery_pic"/>
+  </div>
+
+  <div id="pinglun" class="panel" data-footer="navbar-case">
+    <header>
+      <h1>案例评论</h1>
+      <button class="btn goback" onclick="javascript:$.ui.goBack();$.ui.updateBadge('#jumpComment',$('#hiddenComments').val(),'tr');"><img src="res/img/goback.png"></button>
+      <a class="btn search" id="pingluntodetail">原文</a>
+    </header>
+
+    <div id="case-comment-main">
+      <!-- 评论 -->
+    </div>
+
+    <!-- END 评论 -->
+    <div class="load-more">
+      <p>查看更多</p>
+    </div>
+  </div>
+
+  <div id="case-che-list" class="panel" data-footer="none">
+    <header>
+      <h1>案例列表</h1>
+      <a class="btn goback" href="javascript: $.ui.loadContent('#case-home');"><img src="res/img/goback.png"></a>
+      <a id="tomain" class="btn search"><img src="res/img/cases-icon.png"></a>
+      <div class="cases-name">
+        <div class="div1"><a href="#case-filter-brand">车型</a></div>
+        <div class="div1"><a href="#case-filter-part">故障</a></div>
+        <div class="div1"><a href="#case-filter-order">排序</a></div>
+        <div class="div2"><a href="#case-filter-more">更多</a></div>
+      </div><!-- END 筛选菜单 -->
+    </header>
+
+    <div class="content_top">
+      <div class="cases-list">
+        <ul  id="che-list-box">
+
+        </ul>
+      </div><!-- END item list -->
+      <div class="load-more"><p>查看更多</p></div>
+    </div>
+  </div>
+
+  <div id="case-search" class="panel" data-footer="none" style="overflow:hidden;">
+    <header>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <div id="form-search-box" style="width:65% !important;">
+        <input type="text" id="case-keyword" name="keyword" autofocus placeholder="请输入您要搜索的关键词"/>
+      </div>
+      <span class="search-box">
+      	<button id="searchButton" class="search button"><img src="res/img/btn-search.png"></button>
+      </span>
+    </header>
+    <div class="record">
+      <!--<p>www.baidu.com/</p>-->
+      <!--<div id="hot-tag-box"></div>-->
+    </div>
+  </div>
+
+  <div id="tech-score" class="panel" data-footer="none">
+    <header>
+      <h1>悬赏分值</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#technical-main" class="btn search"><img src="res/img/help-icon.png"></a>
+    </header>
+    <!-- END technical header -->
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="1">0-20</li>
+        <li data-id="2">21-40</li>
+        <li data-id="3">41-60</li>
+        <li data-id="4">61-80</li>
+        <li data-id="5">81-100</li>
+      </div>
+    </div>
+    <!-- END score list -->
+  </div>
+
+
+  <div id="cc-list" class="panel" data-footer="none">
+    <header>
+      <h1>排量</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#technical-main" class="btn search"><img src="res/img/help-icon.png"></a>
+    </header>
+    <!-- END technical header -->
+
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="1">1.3L以下</li>
+        <li data-id="2">1.3L - 1.6L</li>
+        <li data-id="3">1.6L - 2.0L</li>
+        <li data-id="4">2.0L - 3.0L</li>
+        <li data-id="5">3.0L - 5.0L</li>
+        <li data-id="6">5.0L以上</li>
+      </div>
+    </div>
+  </div>
+
+  <div id="transmission-list" class="panel" data-footer="none">
+    <header>
+      <h1>变速箱</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#technical-main" class="btn search"><img src="res/img/help-icon.png"></a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="1">手动</li>
+        <li data-id="2">半自动</li>
+        <li data-id="3">自动</li>
+        <li data-id="4">手自一体</li>
+        <li data-id="5">无极变速</li>
+        <li data-id="6">双离合</li>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索结果 -->
+  <div id="tech-che-list" class="panel" data-footer="none">
+    <header>
+      <h1>求助筛选列表</h1>
+      <a class="btn goback" href="javascript: $.ui.goBack();">
+        <img src="res/img/goback.png">
+      </a>
+      <a href="#technical-main" class="btn search">
+        <img src="res/img/help-icon.png">
+      </a>
+      <div class="tech-name">
+        <div class="div-one"><a href="#filter-brand">车系</a></div>
+        <div class="div-one"><a href="#filter-part">部位</a></div>
+        <div class="div-one"><a href="#transmission-list">变速箱</a></div>
+        <div class="div-two"><a href="#filter-more">更多</a></div>
+      </div><!-- END 筛选菜单 -->
+    </header>
+    <!-- END technical header -->
+
+    <div class="content_top">
+      <div>
+        <div class="tech-list" id="tech-che-list-box">
+          <ul>
+            <!-- 求助主界面列表 -->
+          </ul>
+        </div>
+      </div>
+      <div class="load-more"><p>查看更多</p></div>
+    </div>
+  </div>
+  <!-- END 技术求助 汽车列表 pannel -->
+
+
+  <div id="filter-part" class="panel" data-footer="none">
+    <header>
+      <h1>故障部位</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#technical-main" class="btn search"><img src="res/img/help-icon.png"></a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="1">发动机</li>
+        <li data-id="2">变速箱</li>
+        <li data-id="3">转向系统</li>
+        <li data-id="4">悬架系统</li>
+        <li data-id="5">空调系统</li>
+        <li data-id="6">车身电器</li>
+        <li data-id="7">制动系统</li>
+        <li data-id="8">其他</li>
+      </div>
+    </div>
+  </div>
+  <!-- END 技术求助 故障部位 pannel -->
+
+  <div id="yes-no" class="panel" data-footer="none">
+    <header>
+      <h1>是否解决</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#technical-main" class="btn search"><img src="res/img/help-icon.png"></a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="2">全部</li>
+        <li data-id="1">已解决</li>
+        <li data-id="0">未解决</li>
+
+      </div>
+    </div>
+  </div>
+  <!-- END #yes-no pannel -->
+
+
+  <div id="filter-more" class="panel" data-footer="none">
+    <header>
+      <h1>更多筛选</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#technical-main" class="btn search"><img src="res/img/help-icon.png"></a>
+    </header>
+    <div class="brand">
+      <div class="chexi-names-list">
+        <li data-id="cc" href="#cc-list">排量</li>
+        <li data-id="tech" href="#tech-score">悬赏分值</li>
+        <li data-id="yes" href="#yes-no">是否解决</li>
+      </div>
+    </div>
+  </div>
+  <!-- END #filter-more pannel -->
+
+  <div id="publish-tech" class="panel" data-footer="none">
+    <header>
+      <h1>发布求助</h1>
+      <button class="btn search" style="float:left;" onclick="$.ui.goBack();">取消</button>
+      <a id="submitpub" class="btn search">发布</a>
+    </header>
+    <div class="publish-tech-list">
+      <ul>
+        <li>
+          <span class="publish-left">V&nbsp;&nbsp;I&nbsp;&nbsp;N&nbsp;号</span>
+          <p>
+            <input type="text" id="vin" name="vin" placeholder="请输入vin号"/>
+          </p>
+        </li>
+        <li>
+          <span class="publish-left">车&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</span>
+          <span class="publish-right">
+              <div class="publish-select">
+                <select name="brand_id" style="height:30px; line-height:30px;" id="publish-right-brand" >
+                  <option>品牌</option>
+                </select>
+              </div>
+              <div class="publish-select">
+                <select name="series_id" style="height:30px; line-height:30px;" id="publish-right-series">
+                  <option>车系</option>
+                </select>
+              </div>
+              <div class="publish-select">
+                <select name="year" style="height:30px; line-height:30px;" id="year">
+                  <option>年份</option>
+                  <option value="2003">2003年</option>
+                  <option value="2004">2004年</option>
+                  <option value="2004">2005年</option>
+                  <option value="2006">2006年</option>
+                  <option value="2007">2007年</option>
+                  <option value="2008">2008年</option>
+                  <option value="2009">2009年</option>
+                  <option value="2010">2010年</option>
+                  <option value="2011">2011年</option>
+                  <option value="2012">2012年</option>
+                  <option value="2013">2013年</option>
+                </select>
+              </div>
+          </span>
+        </li>
+        <li>
+          <span class="publish-left">变&nbsp;&nbsp;速&nbsp;&nbsp;箱</span>
+          <p>
+            <select name="transmission" style="height:30px; line-height:30px;" id="transmission">
+              <option>请选择变速箱</option>
+              <option value="1">手动</option>
+              <option value="2">半自动</option>
+              <option value="3">自动</option>
+              <option value="4">手自一体</option>
+              <option value="5">无级变速</option>
+              <option value="6">双离合</option>
+            </select>
+          </p>
+        </li>
+        <li>
+          <span class="publish-left">排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</span>
+          <p>
+            <select name="cc" style="height:30px; line-height:30px;" id="cc">
+              <option value="0">请选择排量</option>
+              <option value="0.8">0.8</option>
+              <option value="1.0">1.0</option>
+              <option value="1.1">1.1</option>
+              <option value="1.2">1.2</option>
+              <option value="1.3">1.3</option>
+              <option value="1.4">1.4</option>
+              <option value="1.5">1.5</option>
+              <option value="1.6">1.6</option>
+              <option value="1.8">1.8</option>
+              <option value="2.0">2.0</option>
+              <option value="2.3">2.3</option>
+              <option value="2.4">2.4</option>
+              <option value="2.5">2.5</option>
+              <option value="2.7">2.7</option>
+              <option value="2.8">2.8</option>
+              <option value="3.0">3.0</option>
+              <option value="3.2">3.2</option>
+              <option value="4.0">4.0</option>
+              <option value="4.2">4.2</option>
+              <option value="4.3">4.3</option>
+              <option value="4.7">4.7</option>
+              <option value="4.8">4.8</option>
+              <option value="5.0">5.0</option>
+              <option value="5.2">5.2</option>
+              <option value="5.9">5.9</option>
+              <option value="6.0">6.0</option>
+              <option value="6.2">6.2</option>
+              <option value="6.3">6.3</option>
+              <option value="7.3">7.3</option>
+              <option value="8.0">8.0</option>
+            </select>
+          </p>
+        </li>
+        <li>
+          <span class="publish-left">故障部位</span>
+          <p>
+            <select name="trouble_location" style="height:30px; line-height:30px;" id="trouble_location">
+              <option>请选择故障部位</option>
+              <option value="1" >发动机</option>
+              <option value="2">变速器</option>
+              <option value="3">转向系统</option>
+              <option value="4">悬架系统</option>
+              <option value="5">空调系统</option>
+              <option value="6">车身电器</option>
+              <option value="7">制动系统</option>
+              <option value="8">其他</option>
+            </select>
+          </p>
+        </li>
+        <li>
+          <span class="publish-left">悬赏积分</span>
+          <p>
+            <select name="score" style="height:30px; line-height:30px;" id="score">
+              <option value="0" selected>0分</option>
+              <option value="5">5分</option>
+              <option value="10">10分</option>
+              <option value="15">15分</option>
+              <option value="20">20分</option>
+              <option value="25">25分</option>
+              <option value="30">30分</option>
+              <option value="35">35分</option>
+              <option value="40">40分</option>
+              <option value="45">45分</option>
+              <option value="50">50分</option>
+              <option value="55">55分</option>
+              <option value="60">60分</option>
+              <option value="65">65分</option>
+              <option value="70">70分</option>
+              <option value="75">75分</option>
+              <option value="80">80分</option>
+              <option value="85">85分</option>
+              <option value="90">90分</option>
+              <option value="95">95分</option>
+              <option value="100">100分</option>
+            </select>
+          </p>
+        </li>
+        <li>
+          <span class="publish-left">公&nbsp;&nbsp;里&nbsp;&nbsp;数</span>
+          <p>
+            <input id="km" name="km" type="text" placeholder="请输入公里数，单位km">
+          </p>
+        </li>
+        <!--<li>-->
+        <!--<span class="publish-left" id="test">上传图片</span>-->
+        <!--<p id="showphoto">-->
+        <!--<input type="file" >-->
+        <!--</p>-->
+        <!--</li>-->
+        <li>
+          <span class="publish-left">拍照上传</span>
+          <p id="showphoto">
+            <input id="takephoto" name="" type="button" value="开始拍照" style="padding:0px !important;background:-webkit-gradient(linear, 0 100%, 0 0, from(#ccc), to(#fff)); color:#000; border:1px solid #ccc; width:100px;">
+          </p>
+        </li>
+        <li>
+          <span class="publish-left">求助内容</span>
+          <p>
+            <textarea name="description" id="description" placeholder="请输入您的求助内容" class='jq-ui-forms'></textarea>
+          </p>
+        </li>
+      </ul>
+      <div class="publish-tech-menu">
+        <button class="btn search" id="submitseek">发&nbsp;&nbsp;&nbsp;&nbsp;布</button>
+      </div>
+    </div>
+  </div><!-- end #publish-tech -->
+
+  <div title='维修案例' id="case-home" class="panel" data-footer="navbar-case-main">
+    <header>
+      <h1>维修案例</h1>
+      <button class="btn gohome" id="case-back-index">
+        <img src="res/img/home.png">
+      </button>
+      <a id="maintosearch" class="btn search"><img src="res/img/btn-search.png"></a>
+      <div class="cases-name">
+        <div class="div1"><a id="case-item-filter">车型</a></div>
+        <div class="div1"><a id="case-item-part">故障</a></div>
+        <div class="div1"><a id="case-item-order">排序</a></div>
+        <div class="div2"><a id="case-item-more">更多</a></div>
+      </div><!-- END 筛选菜单 -->
+    </header>
+    <!-- END customer header -->
+    <div class="content_top" >
+      <div id="asd-cases-main">
+      </div>
+      <div class="cases-list">
+        <ul id="cases-main">
+        </ul>
+      </div>
+      <div class="main-load-more"></div>
+    </div>
+  </div>
+
+  <div title='主修案例' id="case-major" class="panel" data-footer="navbar-case-main">
+    <header>
+      <h1>主修案例</h1>
+      <button class="btn gohome" onclick="$.ui.loadContent('#index',false,false,'fade');$.ui.toggleHeaderMenu();">
+        <img src="res/img/home.png">
+      </button>
+      <a id="maintosearch" class="btn search"><img src="res/img/btn-search.png"></a>
+      <div class="cases-name">
+        <div class="div1"><a href="#case-filter-brand">车型</a></div>
+        <div class="div1"><a href="#case-filter-part">故障</a></div>
+        <div class="div1"><a href="#case-filter-order">排序</a></div>
+        <div class="div2"><a href="#case-filter-more">更多</a></div>
+      </div><!-- END 筛选菜单 -->
+    </header>
+    <!-- END customer header -->
+    <div class="content_top">
+      <div class="cases-list">
+        <ul id="major-main">
+        </ul>
+      </div>
+      <div class="main-load-more"></div>
+    </div>
+  </div>
+
+  <div id="setting" class="panel" style="background:#f8f8f8;" data-footer="none">
+    <header>
+      <h1>设置</h1>
+      <button class="btn gohome" onclick="$.ui.loadContent('#index',false,false,'fade');$.ui.toggleHeaderMenu();"><img src="res/img/goback.png"></button>
+    </header>
+    <div class="app-content">
+
+      <div class="usercenter-content">
+        <form><fieldset>
+          <ul>
+            <li class="top-radius system-setting">
+              <a style="width:180px;">系统消息设置</a>
+              <div class='btn-switch'>
+                <input type='checkbox' id='switch'>
+                <label for='switch'><span></span></label>
+              </div>
+              <!--<span class="checkbox"><input type="checkbox" value="HTML5" id="html5slider" class="jq-ui-slider" />-->
+              <!--<label for="html5slider">HTML5</label></span>-->
+            </li>
+            <li class="bottom-radius"><a href="#feedback">用户反馈</a></li>
+          </ul></fieldset>
+        </form>
+      </div>
+      <div class="usercenter-content">
+        <ul>
+          <li class="top-radius" id="check-version"><a>检测更新</a></li>
+          <li><a onclick="$.ui.loadContent('#leading');$.ui.toggleHeaderMenu();">帮助中心</a></li>
+          <li class="bottom-radius"><a href="#about">关于我们</a></li>
+          <!--<li class="bottom-radius"><a onclick="location.href='./index.html#main'" >登出用户</a></li>-->
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <!-- END #setting -->
+
+  <div id="system-setting" class="panel">
+    <header>
+      <h1>系统消息设置</h1>
+      <a class="btn goback" href="javascript:$.ui.goBack();"><img src="res/img/goback.png"></a>
+      <a href="#information" class="btn search">保存</a>
+    </header>
+    <div class="app-content">
+      <div class="usercenter-content">
+        <ul>
+          <li class="top-radius"><p><span class="resume-edit-left">姓名</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p></li>
+          <li>
+            <p><span class="resume-edit-left">性别</span>
+          <span class="resume-edit">
+            <label>
+              <input type="radio" style="width:16px !important;" name="RadioGroup1" value="单选" id="RadioGroup1_0">
+              男</label>
+            <label>
+              <input type="radio" style="width:16px !important;" name="RadioGroup1" value="单选" id="RadioGroup1_1">
+              女</label>
+          </span></p>
+          </li>
+          <li>
+            <p><span class="resume-edit-left">生日</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+          </li>
+          <li>
+            <p><span class="resume-edit-left">居住地</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+          </li>
+          <li>
+            <p><span class="resume-edit-left">手机</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+          </li>
+          <li>
+            <p><span class="resume-edit-left">E-mail</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+          </li>
+          <li class="bottom-radius"><p><span class="resume-edit-left">个人介绍</span><span class="resume-edit" contenteditable="true"><textarea name="" cols="" rows=""></textarea></span></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- END #system-setting -->
+
+  <div id="feedback" class="panel" data-footer="none" style="background:#f8f8f8;">
+    <header>
+      <h1>用户反馈</h1>
+      <button class="btn goback" onclick="javascript:$.ui.goBack();">
+        <img src="res/img/goback.png">
+      </button>
+    </header>
+    <div class="app-content">
+
+      <div class="usercenter-content">
+        <ul>
+          <li class="top-radius feedback">
+            <textarea name="content" rows="6" id="Content" placeholder="留下您的宝贵意见，我们将持续改进产品（最多不能超过200字"></textarea>
+          </li>
+          <li class="bottom-radius feedback">
+            <input type="text" id="mail" name="mail" placeholder="请输入您的邮箱"/>
+          </li>
+        </ul>
+      </div>
+      <div class="login-submit">
+        <input type="submit" value="提交" id="feedbackSubmit">
+      </div>
+    </div>
+  </div>
+  <!-- END #feedback -->
+
+  <div id="leading" class="panel" style="overflow:hidden;" data-footer="none">
+    <header>
+      <h1>修车帮</h1>
+    </header>
+    <div class="leadng-content">
+      <div id="carousel-box-leading">
+        <div id="carousel-leading">
+          <div> <img src="res/img/leading-1.png" alt=""><span class="leading-text"><span>视觉.交互.全面升级</span><br/>为您奉上“视觉、交互”双重盛宴</span></div>
+          <div> <img src="res/img/leading-2.png" alt=""><span class="leading-text"><span>维修案例</span><br/>推荐信息，方便、迅速</span></div>
+          <div> <img src="res/img/leading-3.png" alt=""><span class="leading-text"><span>维修资料</span><br/>为您奉上您所需的内容</span></div>
+          <div>
+            <img src="res/img/leading-4.png" alt="">
+            <span class="leading-text">
+              <span>技术求助</span>
+              <br/>
+              <p class="go">马上体验</p>
+            </span>
+          </div>
+        </div>
+        <div id="carousel-dots-leading"></div>
+      </div><!-- END 图片切换 -->
+    </div>
+  </div>
+  <!-- END #about -->
+
+  <div id="about" class="panel" data-footer="none" style="overflow:hidden; background:rgba(240, 240, 240, 1);">
+    <header>
+      <h1>关于修车帮</h1>
+      <button class="btn gohome" onclick="$.ui.loadContent('#index',false,false,'fade');$.ui.toggleHeaderMenu();">
+        <img src="res/img/goback.png">
+      </button>
+    </header>
+    <div class="about-content">
+      <p><img src="res/img/logo.png"></p>
+      <p class="text">www.xchelp.com&nbsp;&nbsp;version 0.9.799</p>
+    </div>
+  </div>
+  <!-- END #about -->
+
+  </div>
+  <!-- navbar -->
+  <div id="navbar2" style="margin:0; float:left;" data-position="fixed">
+    <a class="ucenter-icon" id="to-center"><br/>个人中心</a>
+    <a class="friend-icon" id="to-friend"><br/>我的好友</a>
+    <a class="help-icon" id="to-help"><br/>发布求助</a>
+    <a class="collection-icon" id="to-collection"><br/>我的收藏</a>
+  </div>
+
+  <div id="navbar" style="margin: 0; float:left; " data-position="fixed">
+    <a class="shares" id="refresh_tech_detail"><br/>刷新</a>
+    <a class="collection"><br/>收藏</a>
+    <span style="width:155px; height:30px; display:inline-block !important;">
+        <input type="text"  name="comment" id="reply_comment"/>
+        <input type="hidden" id="hiddentechId" name="tech_id"/>
+    </span>
+    <button id="submit_comment" class="button" >快速回答</button>
+  </div>
+
+  <div id="navbar-case" style="margin: 0; float:left; " data-position="fixed">
+    <a class="shares" id="refresh"><br>刷新</a>
+    <a class="collection"><br>收藏</a>
+      <span style="width:175px; height:30px; display:inline-block !important;">
+          <input type="text" name="comment" id="reply_comment"/>
+          <input type="hidden" id="hiddenComments" name="comments"/>
+          <input type="hidden" id="hiddenLocations" name="locations"/>
+          <input type="hidden" id="location_history" name="location_history"/>
+      </span>
+    <!-- <a style="width:50px;"> --><button id="submit_comment" class="button" >发表</button><!-- </a> -->
+  </div>
+
+  <div id="navbar-case-main" style="margin: 0; float:left; " data-position="fixed">
+    <div class="all-cases all-cases-current" id="all-cases">&nbsp;全部案例</div>
+    <div class="major-cases" id="major-cases">&nbsp;主修案例</div>
+  </div>
+
+</div>
+
+<script type="text/javascript" charset="utf-8" src="js/jq.mobi.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jq.ui.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jq.carousel.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jq.alphatable.js"></script>
+<script type="text/javascript" charset="utf-8" src="./init.js"></script>
+<script type="text/javascript" charset="utf-8"  src='mobinweaverlibs/mobinweaver.js'></script>
+<script type="text/javascript" charset="utf-8"  src='mobinweaverlibs/mobinweaver-service-mediacapture.js'></script>
+<!--<script src=" http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1882592059" type="text/javascript" charset="utf-8"></script>-->
+<!--<script type="text/javascript" charset="utf-8">-->
+  <!--WB2.anyWhere(function(W){-->
+    <!--W.widget.connectButton({-->
+      <!--id: "wb_connect_btn",-->
+      <!--type:'4,2',-->
+      <!--callback : {-->
+        <!--login:function(o){	//登录后的回调函数-->
+          <!--alert("login: "+o.screen_name)-->
+        <!--},-->
+        <!--logout:function(){	//退出后的回调函数-->
+          <!--alert('logout');-->
+        <!--}-->
+      <!--}-->
+    <!--});-->
+  <!--});-->
+<!--</script>-->
+<script type="text/javascript" charset="utf-8">
+  $.ui.ready(
+    function(){
+      $.ui.toggleHeaderMenu(); //force hide
+    }
+  );
+</script>
+
+<!-- 好友列表 -->
+<script type="text/template" id="tmpl-friend-items">
+  <% _.each(data, function(v, k){ %>
+  <li data-id="<%= v.id %>">
+    <img src="http://xchelp.com/assets/upload/user_photo_new/<%= v.preView %>" />
+    <p><span class="title"><%= v.site_name %></span><span class="developer"><%= v.intro %></span></p>
+  </li>
+  <% }); %>
+</script>
+
+<!-- 粉丝列表 -->
+<script type="text/template" id="tmpl-fans-items">
+  <% _.each(data, function(v, k){ %>
+  <li data-id="<%= v.id %>">
+    <img src="http://xchelp.com/assets/upload/user_photo_new/<%= v.preView %>" />
+    <p><span class="title"><%= v.site_name %></span><span class="developer"><%= v.intro %></span></p>
+  </li>
+  <% }); %>
+</script>
+
+<!-- 关注列表 -->
+<script type="text/template" id="tmpl-following-items">
+  <% _.each(data, function(v, k){ %>
+  <li data-id="<%= v.id %>">
+    <img src="http://xchelp.com/assets/upload/user_photo_new/<%= v.preView %>" />
+    <p><span class="title"><%= v.site_name %></span><span class="developer"><%= v.intro %></span></p>
+  </li>
+  <% }); %>
+</script>
+
+<!-- 我的发布 -->
+<script type="text/template" id="tmpl-mypublish-items">
+  <% _.each(data, function(v, k){ %>
+  <li id="mypublish-li" data-id="<%= v.id %>">
+    <img src="http://www.xchelp.com/assets/upload/brand/<%= v.photo %>">
+    <p><span class="title"><%= v.title %></span><span class="developer"><%= v.intro %></span></p>
+  </li>
+  <% }); %>
+</script>
+
+
+<!-- 我收藏的案例 -->
+<script type="text/template" id="tmpl-collection-cases">
+  <% _.each(data, function(v, k){ %>
+    <li data-id="<%= v.id %>">
+      <img src="http://www.xchelp.com/assets/upload/brand/<%= v.photo %>" />
+      <p><span class="title"><%= v.title %></span><span class="developer"><%=v.intro%></span></p>
+    </li>
+  <% }); %>
+</script>
+
+<!-- 个人信息header -->
+<script type="text/template" id="tmpl-infor-header">
+  <h1>个人基本信息</h1>
+  <a class="btn goback" href="javascript:$.ui.loadContent('#usercenter');"><img src="res/img/goback.png"></a>
+  <% if(data == 1){%>
+  <a href="#information-edit" class="btn search">修改</a>
+  <% } %>
+</script>
+
+<!-- 我的案例 -->
+<script type="text/template" id="tmpl-case-items">
+  <% _.each(data, function(v, k){ %>
+  <li data-id="<%= v.id %>">
+    <img src="http://www.xchelp.com/assets/upload/brand/<%= v.photo %>">
+    <p>
+      <span class="title"><%= v.title %></span>
+      <span class="developer"><%= v.intro %></span>
+    </p>
+  </li>
+  <% }); %>
+</script>
+
+<!-- 个人主页微博列表部分 -->
+<script type="text/template" id="tmpl-homepage-weibo-items">
+  <% _.each(data, function(v, k){ %>
+  <li>
+    <span class="weibo_title">
+      <span>
+        <strong><%=v.site_name%></strong>
+        <img src="res/img/v.png">
+      </span>
+      <span style="float:right;">
+        <span class="zf"><%=v.reprintcontent%></span>
+        <span class="ts"><%=v.reply%></span>
+      </span>
+    </span>
+    <p class="top_p"><%=v.weibo%></p>
+  </li>
+  <% }); %>
+</script>
+
+<!-- 积分规则列表 -->
+<script type="text/template" id="tmpl-rules-list">
+  <% _.each(data, function(v, k){ %>
+  <li>
+    <div class="divone-list"><%=v.action_name%></div>
+    <div class="divtwo-list"><%=v.range_per%></div>
+    <div class="divtwo-list"><%=v.reward_num%></div>
+    <div class="divthree-list"><%=v.rule_sorce%></div>
+  </li>
+  <% }); %>
+</script>
+
+<!-- 用户积分列表 -->
+<script type="text/template" id="tmpl-score-list">
+  <% _.each(data, function(v, k){ %>
+  <li>
+    <div class="divone"><%=v.action_name%></div>
+    <div class="divtwo"><%=v.score%></div>
+    <div class="divthree"><%=v.date_time%></div>
+  </li>
+  <% }); %>
+</script>
+
+
+<script type="text/template" id="tmpl-home-items">
+  <ul>
+    <li class="top-radius"><p><span class="resume-edit-left">姓名</span><span class="resume-edit"><%=data.trueName%></span></p></li>
+    <li>
+      <p><span class="resume-edit-left">性别</span><span class="resume-edit">
+    <% if(data.sex== '1'){%>男<% } %><% if(data.sex== '0'){%>女<% } %></span></p>
+    </li>
+    <!--<li>-->
+    <!--<p><span class="resume-edit-left">生日</span><span class="resume-edit"><% if(data.birthday == null){%>暂未填写<% } %><% if(data.birthday != null){%><%=data.birthday%><% } %></span></p>-->
+    <!--</li>-->
+    <li>
+      <p><span class="resume-edit-left">居住地</span><span class="resume-edit">尚未填写</span></p>
+    </li>
+    <li>
+      <p><span class="resume-edit-left">手机</span><span class="resume-edit"><%=data.tel%></span></p>
+    </li>
+    <li>
+      <p><span class="resume-edit-left">E-mail</span><span class="resume-edit"><%=data.mail%></span></p>
+    </li>
+    <li class="bottom-radius">
+      <p><span class="resume-edit-left">个人介绍</span><span class="resume-edit" contenteditable="true"><%=data.intro%></span></p>
+    </li>
+  </ul>
+</script>
+
+<!-- 修改个人信息 -->
+<script type="text/template" id="tmpl-edit-home-items">
+  <ul>
+    <li class="top-radius"><p><span class="resume-edit-left">姓名</span><span class="resume-edit"><input type="text" name="edit_truename" id="edit_truename" value="<%=data.trueName%>" class="jq-ui-forms"/></span></p></li>
+    <li>
+      <p><span class="resume-edit-left">性别</span>
+  <span class="resume-edit">
+  <% if(data.sex== '1'){%>
+    <label>
+      <input type="radio" style="width:16px !important;" checked="checked" name="sex" value="1" id="sex">
+      男</label>
+    <label>
+      <input type="radio" style="width:16px !important;" name="sex" value="0" id="sex">
+      女</label>
+    <% } %>
+    <% if(data.sex== '0'){%>
+      <label>
+        <input type="radio" style="width:16px !important;"  name="sex" value="1" id="sex">
+        男</label>
+      <label>
+        <input type="radio" style="width:16px !important;"  checked="checked" name="sex" value="0" id="sex">
+        女</label>
+      <% } %>
+  </span></p>
+    </li>
+    <!--<li>-->
+    <!--<p><span class="resume-edit-left">生日</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms" value="<% if(data.birthday != null){%><%=data.birthday%><% } %>"/></span></p>-->
+    <!--</li>-->
+    <li>
+      <p><span class="resume-edit-left">居住地</span><span class="resume-edit"><input type="text" name="comment" class="jq-ui-forms"/></span></p>
+    </li>
+    <li>
+      <p><span class="resume-edit-left">手机</span><span class="resume-edit"><input type="text" name="edit_tel" id="edit_tel" class="jq-ui-forms" value="<%=data.tel%>"/></span></p>
+    </li>
+    <li>
+      <p><span class="resume-edit-left">E-mail</span><span class="resume-edit"><input type="text" name="edit_mail" id="edit_mail" class="jq-ui-forms" value="<%=data.mail%>"/></span></p>
+    </li>
+    <li class="bottom-radius"><p><span class="resume-edit-left">个人介绍</span><span class="resume-edit" contenteditable="true"><textarea name="edit_intro" id="edit_intro" cols="" rows=""><%=data.intro%></textarea></span></p></li>
+  </ul>
+</script>
+
+
+<!-- 用户个人主页-基础信息部分 -->
+<script type="text/template" id="tmpl-homepage-base">
+  <ul>
+    <li>
+    <span class="resume-img"><a href="#personal-homepage">
+      <img src="http://xchelp.com/assets/upload/user_photo_new/<%=data.preView %>"/></a></span>
+      <p>
+        <span class="title"><%=data.site_name%></span>
+        <span class="developer"><% if(data.sex== '1'){%>男<% } %><% if(data.sex== '0'){%>女<% } %>&nbsp;&nbsp;&nbsp;<% if(data.birthday == null){%>暂未填写<% } %><% if(data.birthday != null){%><%=data.birthday%><% } %><br/></span>
+        <% if(data.isfollow == 0){%>
+        <a data-id="0-<%=data.uid%>" id="isfollow"  style="float:left;">
+          <button class="button" >关注</button>
+        </a>
+        <% } %>
+        <% if(data.isfollow == 1){%>
+        <a data-id="1-<%=data.uid%>" id="isfollow" style="float:left;">
+          <button class="button" >取消关注</button>
+        </a>
+        <% } %>
+      </p>
+    </li>
+    <div class="my-resume" style="padding:0 10px !important; height:70px; border-bottom:1px solid #ddd;">
+      <a class="homepage-menu" href="#information" id="to-information" data-id="<%=data.uid%>">详细<br>资料</a>
+      <a class="homepage-menu" href="#" id="to-following-list" data-id="<%=data.uid%>"><span><%=data.followers_count%></span><br>关注</a>
+      <a class="homepage-menu" href="#" id="to-fans-list" data-id="<%=data.uid%>"><span><%=data.fans_count%></span><br>粉丝</a>
+      <% if(data.auth == 1){%>
+      <a class="homepage-menu" href="#my-collection"><span><%=data.collect_count%></span><br>收藏</a>
+      <% } %>
+    </div>
+  </ul>
+</script>
+
+
+<!--求助详情界面数据-->
+<script type="text/template" id="tmpl-cases-detail">
+  <div id="cases-detail-title">
+    <h1><%= article.title %></h1>
+    <div id="cases-title-main">
+      <span><%= article.date_time %></span>
+      <span>来源：<% if(article.source == null){%>修车帮<% } %><% if(article.source != null){%><%= article.source %><% } %></span>
+      <span>作者：<%= article.site_name %></span>
+    </div>
+  </div>
+
+  <div class="cases-detail-main">
+    <p class="casesmain"> <h5>● 故障现象</h5> <%= article.trouble_phenomenon %> </p>
+  </div>
+
+  <div class="cases-detail-main">
+    <p class="casesmain"> <h5>● 故障分析</h5> <%= article.inspectional %> </p>
+  </div>
+
+  <div class="cases-detail-main">
+    <p class="casesmain"> <h5>● 故障解决</h5> <%= article.trouble_removal %> </p>
+  </div>
+
+  <div class="cases-detail-main">
+    <p class="casesmain"> <h5>● 回顾总结</h5> <%= article.summarize %> </p>
+  </div>
+</script>
+
+
+
+<script type="text/template" id="tmpl-company-detail">
+  <ul>
+    <li style="margin-bottom:10px;">
+      <div class="app-content" style="font-size:12px;">
+        <h1 style="color:#333;"><%=company_name%></h1>
+      </div>
+    </li>
+  </ul>
+  <div class="detail-main">
+    <div class="app-content">
+      <p><span class="color">公司规模</span>：<%=company_scale%></p>
+      <p><span class="color">创立时间</span>：<%=found_time%>年</p>
+      <p><span class="color">公司地址</span>：<%=detailed_addre%></p>
+      <p><strong>详细信息</strong></p>
+    </div>
+  </div>
+  <div class="app-content">
+    <%=com_intro%>
+  </div>
+</script>
+
+
+<script type="text/template" id="tmpl-position-detail">
+  <ul>
+    <li style="margin-bottom:10px;">
+      <div class="app-content" style="font-size:12px;">
+        <h1 style="color:#333;"><%=position_title%></h1>
+        <span>发布时间：<%=date_time%></span><span style="float:right;">已有2432人浏览</span>
+      </div>
+    </li>
+  </ul>
+  <div class="detail-main">
+    <div class="app-content">
+      <p><span class="color">人数</span>：<%=num%>人</p>
+      <p><span class="color">年龄</span>：<%=age%></p>
+      <p><span class="color">性别</span>：<%=sex%></p>
+      <p><span class="color">工作地点</span>：<%=place%></p>
+      <p><span class="color">学历要求</span>：<%=education%></p>
+      <p><span class="color">薪资</span>：<%=salary%>元</p>
+      <p><strong>详细信息</strong></p>
+    </div>
+  </div>
+  <div class="app-content">
+    <%=position_descriptions%>
+  </div>
+</script>
+
+
+<!-- 求助首界面 -->
+<script type="text/template" id="tmpl-tech-items">
+  <% _.each(data, function(v, k){ %>
+
+  <li data-id="<%= v.id %>">
+    <img src="http://xchelp.com/assets/upload/brand/<%= v.photo %>" />
+    <p>
+      <span class="title"><% if(v.year != null){%><%= v.year %>年&nbsp;<% } %>  <%=v.brand_name  %>&nbsp;<%=v.series_name  %></span>
+      <span class="tech-yes text"><%=v.description%></span>
+      <span class="tech-yes">
+      <span class="money">悬赏：<%= v.score %>金币&nbsp;</span>
+			</span>
+    </p>
+    <!--<span class="yes">已解决</span>-->
+    <% if(v.is_solve == '1'){%>
+    <span class="yes"></span>
+    <% } %>
+    <% if(v.is_solve == '0'){%>
+    <span class="no"></span>
+    <% } %>
+
+  </li>
+  <% }); %>
+</script>
+
+
+<!-- 求助详情界面 -->
+<script type="text/template" id="tmpl-tech-detail">
+  <div class="brand-name">
+    <strong><%=brand_name%> <%=series_name%> <%=year%>年</strong><br/>
+    <img id="tech_first_detail_to_user" data-id="<%=user_id%>" src="http://xchelp.com/assets/upload/user_photo_new/<%=master_photo%>" />
+    <span id="tech_first_detail_to_user" data-id="<%=user_id%>"><%=site_name%></span>&nbsp;|&nbsp;<span>发布时间：<%=date_time%></span>
+  </div>
+  <div class="note_content">
+    <span><strong class="money">悬赏 <%=score%> 金币</strong></span>
+    <span>
+      <% if(is_solve == '1'){%>
+      <strong class="yes-y">已解决</strong>
+      <% } %>
+      <% if(is_solve == '0'){%>
+      <strong class="no-n">未解决</strong>
+      <% } %>
+      <br/>
+    </span>
+		<span>
+			<strong>V&nbsp;&nbsp;I&nbsp;&nbsp;N&nbsp;&nbsp;&nbsp;号：</strong><% if(VIN == ''){%>暂无信息<% } %><% if(VIN != ''){%><%=VIN%><% } %><br/>
+			<strong>故障部位：</strong><%=trouble_location%><br/>
+		</span>
+		<span>
+			<strong>排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：</strong><%=cc%> L<br/>
+			<strong>行驶里程：</strong><% if(km == null){%>暂无信息<% } %><% if(km != null){%><%=km%> Km<% } %>
+		</span>
+  </div>
+
+  <div class="tech-detail-main">
+    <p class="techmain"> <h5>● 故障描述</h5> <%=description%> </p>
+  </div>
+  <div class="tech-detail-main">
+    <p class="techmain"> <h5>● 维修过程</h5> <%=process%></p>
+  </div>
+
+  <% if(is_solve == '1'){%>
+    <div class="comment-pinglun">
+      <div class="answer-list green-bg">
+        <div class="comment">
+          <div class="pai"><b>求助者采纳的最佳答案</b></div>
+        </div>
+        <div class="tech-answer">
+          <div class="tech-answer-right" id="tech_first_detail_to_user" data-id="<%=first_reply_content.user_id%>">
+            <img src="http://xchelp.com/assets/upload/user_photo_new/<%=first_reply_content.preView%>" />
+          </div>
+          <div class="tech-answer-left">
+            <div class="right-sj"></div>
+            <div class="tech-question-left-m">
+              <li><%=first_reply_content.reply_content%></li>
+            </div>
+          </div>
+        </div>
+        <% _.each(other_reply_content, function(v, k){ %>
+          <% if(v.add_type == 3){%>
+            <div class="tech-answer">
+              <div class="tech-answer-right" style="float:left;" id="tech_other_detail_to_user" data-id="<%=v.user_id%>">
+                <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+              </div>
+              <div class="tech-question-left">
+                <div class="left-sj"></div>
+                <div class="tech-answer-left-m">
+                  <li><%=v.reply_content%></li>
+                </div>
+              </div>
+            </div>
+          <% } %>
+          <% if(v.add_type == 4){%>
+            <div class="tech-answer">
+              <div class="tech-answer-right" id="tech_other_detail_to_user" data-id="<%=v.user_id%>">
+                <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+              </div>
+              <div class="tech-answer-left">
+                <div class="right-sj"></div>
+                <div class="tech-question-left-m">
+                  <li><%=v.reply_content%></li>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% }); %>
+      </div>
+    </div>
+  <% } %>
+
+  <% if(is_solve == '0'){%>
+    <% if(my_first_reply_content == ''){%>
+      <div class="comment-pinglun">
+        <div class="answer-list">
+          <div class="comment" style="text-align:center; padding-top:20px;">
+            <b>目前尚无最佳答案</b>
+          </div>
+        </div>
+        <% if(is_my == 'no'){%>
+          <div class="tech-answer">
+            <div class="comment-button" style="text-align:center !important;">
+              <button style="width:95% !important;" data-id="<%=id%>" id="detail_first_textarea">我要回答</button>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+
+    <% if(my_first_reply_content != ''){%>
+      <div class="comment-pinglun">
+        <div class="answer-list gray-bg">
+          <div class="comment">
+            <div class="my-headimg"><b>我的回答</b></div>
+          </div>
+          <div class="tech-answer">
+            <div class="tech-answer-right" data-id="<%=my_first_reply_content.user_id%>">
+              <img src="http://xchelp.com/assets/upload/user_photo_new/<%=my_first_reply_content.preView%>" />
+            </div>
+            <div class="tech-answer-left">
+              <div class="right-sj"></div>
+              <div class="tech-question-left-m">
+                <li><%=my_first_reply_content.reply_content%></li>
+              </div>
+            </div>
+          </div>
+          <% _.each(my_other_reply_content, function(v, k){ %>
+            <% if(v.add_type == 3){%>
+              <div class="tech-answer">
+                <div class="tech-answer-right" style="float:left;" id="tech_other_detail_to_user" data-id="<%=v.user_id%>">
+                  <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+                </div>
+                <div class="tech-question-left">
+                  <div class="left-sj"></div>
+                  <div class="tech-answer-left-m">
+                    <li><%=v.reply_content%></li>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+            <% if(v.add_type == 4){%>
+              <div class="tech-answer">
+                <div class="tech-answer-right" id="tech_other_detail_to_user" data-id="<%=v.user_id%>">
+                  <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+                </div>
+                <div class="tech-answer-left">
+                  <div class="right-sj"></div>
+                  <div class="tech-question-left-m">
+                    <li><%=v.reply_content%></li>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+          <% }); %>
+
+          <% if(is_disable == 0){%>
+            <div class="tech-answer">
+              <div class="comment-button padding-r">
+                <button data-id="<%=id%>" data-val="<%=my_first_reply_content.id%>" id="detail_continue_textarea">继续回答</button>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    <% } %>
+  <% } %>
+</script>
+
+<!-- 品牌LIST -->
+<script type="text/template" id="case-tmpl-brand">
+  <% _.each(data, function(v, k){ %>
+  <div class="tableHeader" id="Case_itm_anchor_<%= k %>"><%= k %></div>
+  <% _.each(v, function(v2, k2){ %>
+  <li data-id="<%= v2.id %>">
+    <img src="http://xchelp.com/assets/upload/brand/<%= v2.brand_img %>">
+    <p><%= v2.brand_name %></p>
+  </li>
+  <% }); %>
+  <% }); %>
+</script>
+
+<!-- 发布求助 - 品牌选择 -->
+<script type="text/template" id="publish-tmpl-brand">
+  <% _.each(data, function(v, k){ %>
+  <optgroup label="<%= k %>">
+    <% _.each(v, function(v2, k2){ %>
+    <option value="<%= v2.id %>"><%= v2.brand_name %></option>
+    <% }); %>
+  </optgroup>
+  <% }); %>
+</script>
+
+<!-- 发布求助 - 车系选择 -->
+<script type="text/template" id="publish-tmpl-series">
+	<% _.each(data, function(v, k){ %>
+  <option value="<%= v.sid %>"><%= v.series_name %></option>
+  <% }); %>
+</script>
+
+<!-- 发布求助 - 车型选择 -->
+<script type="text/template" id="publish-tmpl-type">
+  <% _.each(data, function(v, k){ %>
+  <option value="<%= v.tid %>"><%= v.type_name %></option>
+  <% }); %>
+</script>
+
+<!-- 求助回复列表标题模板 -->
+<script type="text/template" id="tech-tpml-comment-title">
+  <span class="title">求助主题： <%=data.brand_name%> <%=data.series_name%> <%=data.year%>年<br/></span>
+  <div id="comment_to_top_user" data-id="<%=data.user_id%>" class="question-main-li" style="display:inline-block !important;">
+    <img src="http://xchelp.com/assets/upload/user_photo_new/<%=data.preView%>" /><%=data.site_name%>&nbsp;|&nbsp;<%=data.date_time%>
+  </div>
+	<div class="comment-button answer-button" style="display:inline-block !important; float:right;">
+    <% if(data.isdisable == 1 && data.is_solve == 0){%>
+		  <button data-id="<%=data.id%>" id="comment-my-first-answer">我来回答</button>
+    <% } %>
+	</div>
+</script>
+
+<!-- 求助回复列表界面模板 -->
+<script type="text/template" id="tech-tpml-comment">
+  <% if(data.body.is_solve == 0){%>
+    <% if(data.body.car_info[0].my_id != data.body.car_info[0].user_id){%>
+      <% _.each(data.body.first_reply, function(v, k){ %>
+        <div class="answer-list">
+          <div class="tech-answer">
+            <div class="tech-answer-right" id="comment_to_user" data-id="<%=v.user_id%>">
+              <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+            </div>
+            <div class="tech-answer-left">
+              <div class="right-sj"></div>
+              <div class="tech-question-left-m">
+                <li><%=v.reply_content%></li>
+              </div>
+            </div>
+          </div>
+          <% _.each(data.body.other, function(vv, kk){ %>
+            <% if(vv.type == v.id){%>
+              <% if(vv.add_type == 3){%>
+                <div class="tech-answer">
+                  <div class="tech-answer-right" id="comment_to_user" style="float:left;" data-id="<%=vv.user_id%>">
+                    <img src="http://xchelp.com/assets/upload/user_photo_new/<%=vv.preView%>" />
+                  </div>
+                  <div class="tech-question-left">
+                    <div class="left-sj"></div>
+                    <div class="tech-answer-left-m">
+                      <li><%=vv.reply_content%></li>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+              <% if(vv.add_type == 4){%>
+                <div class="tech-answer">
+                  <div class="tech-answer-right" id="comment_to_user" data-id="<%=vv.user_id%>">
+                    <img src="http://xchelp.com/assets/upload/user_photo_new/<%=vv.preView%>" />
+                  </div>
+                  <div class="tech-answer-left">
+                    <div class="right-sj"></div>
+                    <div class="tech-question-left-m">
+                      <li><%=vv.reply_content%></li>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+            <% } %>
+          <% }); %>
+          <% if(v.user_id == data.body.userinfo.user_id && data.body.isdisable ==0){%>
+            <div style="padding:10px 45px 0 !important;">
+              <div class="comment-button">
+                <button id="comment-my-continue-answer" data-val="<%=v.reply_id%>" data-id="<%=v.id%>">继续回答</button>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      <% }); %>
+    <% } %>
+
+    <% if(data.body.car_info[0].my_id == data.body.car_info[0].user_id){%>
+      <% _.each(data.body.first_reply, function(v, k){ %>
+        <div class="answer-list">
+          <div class="tech-answer">
+            <div class="tech-answer-right" style="float:left;" id="comment_to_user" data-id="<%=v.user_id%>">
+              <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+            </div>
+            <div class="tech-question-left">
+              <div class="left-sj"></div>
+              <div class="tech-answer-left-m">
+                <li><%=v.reply_content%></li>
+              </div>
+            </div>
+          </div>
+          <% _.each(data.body.other, function(vv, kk){ %>
+          <% if(vv.type == v.id){%>
+          <% if(vv.add_type == 3){%>
+          <div class="tech-answer">
+            <div class="tech-answer-right" id="comment_to_user"  data-id="<%=vv.user_id%>">
+              <img src="http://xchelp.com/assets/upload/user_photo_new/<%=vv.preView%>" />
+            </div>
+            <div class="tech-answer-left">
+              <div class="right-sj"></div>
+              <div class="tech-question-left-m">
+                <li><%=vv.reply_content%></li>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <% if(vv.add_type == 4){%>
+          <div class="tech-answer">
+            <div class="tech-answer-right" style="float:left;" id="comment_to_user" data-id="<%=vv.user_id%>">
+              <img src="http://xchelp.com/assets/upload/user_photo_new/<%=vv.preView%>" />
+            </div>
+            <div class="tech-question-left">
+              <div class="left-sj"></div>
+              <div class="tech-answer-left-m">
+                <li><%=vv.reply_content%></li>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <% } %>
+          <% }); %>
+          <div style="padding:10px 45px 0 !important;">
+            <div class="comment-button">
+              <% if(v.master_disable == 1){%>
+                <button id="comment-my-question" data-id="<%=v.id%>" data-val="<%=v.reply_id%>">继续追问</button>
+              <% } %>
+              <span>
+                <button data-id="<%=v.id%>" data-val="<%=v.user_id%>" id="set-seek-status">设为最佳答案</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
+  <% } %>
+
+  <% if(data.body.is_solve == 1){%>
+    <% if(data.body.car_info[0].my_id != data.body.car_info[0].user_id){%>
+
+      <div class="comment-pinglun">
+        <div class="answer-list green-bg">
+          <div class="comment">
+            <div class="pai"><b>求助者采纳的最佳答案</b></div>
+          </div>
+          <% _.each(data.body.best_reply, function(v, k){ %>
+            <% if(v.add_type == 3 || v.add_type == 0){%>
+              <div class="tech-answer">
+                <div class="tech-answer-right" id="comment_to_user" style="float:left;" data-id="<%=v.user_id%>">
+                  <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+                </div>
+                <div class="tech-question-left">
+                  <div class="left-sj"></div>
+                  <div class="tech-answer-left-m">
+                    <li><%=v.reply_content%></li>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+            <% if(v.add_type == 4){%>
+              <div class="tech-answer">
+                <div class="tech-answer-right" id="comment_to_user" data-id="<%=v.user_id%>">
+                  <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+                </div>
+                <div class="tech-answer-left">
+                  <div class="right-sj"></div>
+                  <div class="tech-question-left-m">
+                    <li><%=v.reply_content%></li>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+          <% }); %>
+        </div>
+      </div>
+
+      <% _.each(data.body.first_reply, function(v, k){ %>
+        <div class="answer-list">
+          <div class="tech-answer">
+            <div class="tech-answer-right" id="comment_to_user" data-id="<%=v.user_id%>">
+              <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+            </div>
+            <div class="tech-answer-left">
+              <div class="right-sj"></div>
+              <div class="tech-question-left-m">
+                <li><%=v.reply_content%></li>
+              </div>
+            </div>
+          </div>
+          <% _.each(data.body.other, function(vv, kk){ %>
+            <% if(vv.type == v.id){%>
+              <% if(vv.add_type == 3){%>
+                <div class="tech-answer">
+                  <div class="tech-answer-right" id="comment_to_user" style="float:left;" data-id="<%=vv.user_id%>">
+                    <img src="http://xchelp.com/assets/upload/user_photo_new/<%=vv.preView%>" />
+                  </div>
+                  <div class="tech-question-left">
+                    <div class="left-sj"></div>
+                    <div class="tech-answer-left-m">
+                      <li><%=vv.reply_content%></li>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+              <% if(vv.add_type == 4){%>
+                <div class="tech-answer">
+                  <div class="tech-answer-right" id="comment_to_user" data-id="<%=vv.user_id%>">
+                    <img src="http://xchelp.com/assets/upload/user_photo_new/<%=vv.preView%>" />
+                  </div>
+                  <div class="tech-answer-left">
+                    <div class="right-sj"></div>
+                    <div class="tech-question-left-m">
+                      <li><%=vv.reply_content%></li>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+            <% } %>
+          <% }); %>
+        </div>
+      <% }); %>
+    <% } %>
+
+    <% if(data.body.car_info[0].my_id == data.body.car_info[0].user_id){%>
+      <div class="comment-pinglun">
+        <div class="answer-list green-bg">
+          <div class="comment">
+            <div class="pai"><b>求助者采纳的最佳答案</b></div>
+          </div>
+          <% _.each(data.body.best_reply, function(v, k){ %>
+          <% if(v.add_type == 3){%>
+          <div class="tech-answer">
+            <div class="tech-answer-right" id="comment_to_user" style="float:left;" data-id="<%=v.user_id%>">
+              <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+            </div>
+            <div class="tech-question-left">
+              <div class="left-sj"></div>
+              <div class="tech-answer-left-m">
+                <li><%=v.reply_content%></li>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <% if(v.add_type == 4  || v.add_type == 0){%>
+          <div class="tech-answer">
+            <div class="tech-answer-right" id="comment_to_user" data-id="<%=v.user_id%>">
+              <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+            </div>
+            <div class="tech-answer-left">
+              <div class="right-sj"></div>
+              <div class="tech-question-left-m">
+                <li><%=v.reply_content%></li>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <% }); %>
+        </div>
+      </div>
+
+      <% _.each(data.body.first_reply, function(v, k){ %>
+      <div class="answer-list">
+        <div class="tech-answer">
+          <div class="tech-answer-right" id="comment_to_user" data-id="<%=v.user_id%>">
+            <img src="http://xchelp.com/assets/upload/user_photo_new/<%=v.preView%>" />
+          </div>
+          <div class="tech-answer-left">
+            <div class="right-sj"></div>
+            <div class="tech-question-left-m">
+              <li><%=v.reply_content%></li>
+            </div>
+          </div>
+        </div>
+        <% _.each(data.body.other, function(vv, kk){ %>
+        <% if(vv.type == v.id){%>
+        <% if(vv.add_type == 3){%>
+        <div class="tech-answer">
+          <div class="tech-answer-right" id="comment_to_user" style="float:left;" data-id="<%=vv.user_id%>">
+            <img src="http://xchelp.com/assets/upload/user_photo_new/<%=vv.preView%>" />
+          </div>
+          <div class="tech-question-left">
+            <div class="left-sj"></div>
+            <div class="tech-answer-left-m">
+              <li><%=vv.reply_content%></li>
+            </div>
+          </div>
+        </div>
+        <% } %>
+        <% if(vv.add_type == 4){%>
+        <div class="tech-answer">
+          <div class="tech-answer-right" id="comment_to_user" data-id="<%=vv.user_id%>">
+            <img src="http://xchelp.com/assets/upload/user_photo_new/<%=vv.preView%>" />
+          </div>
+          <div class="tech-answer-left">
+            <div class="right-sj"></div>
+            <div class="tech-question-left-m">
+              <li><%=vv.reply_content%></li>
+            </div>
+          </div>
+        </div>
+        <% } %>
+        <% } %>
+        <% }); %>
+      </div>
+      <% }); %>
+    <% } %>
+  <% } %>
+</script>
+
+<!-- 案例部分 -->
+
+<!--首页列表界面--> <!--搜索结果界面-->
+<script type="text/template" id="tmpl-case-home-items">
+  <% _.each(data, function(v, k){ %>
+  <li data-id="<%= v.id %>">
+    <img src="http://www.xchelp.com/assets/upload/brand/<%= v.photo %>">
+    <p>
+      <span class="title"><%= v.title %></span>
+      <span class="developer"><%= v.intro %></span>
+      </span>
+    </p>
+  </li>
+  <% }); %>
+</script>
+
+<!-- 案例首页的图片广告切换 -->
+<script type="text/template" id="tmpl-cases-ads-items">
+  <div id="carousel-box" >
+    <div id="carousel-dots" style="width: 50px;"></div>
+    <div id="carousel" >
+      <% _.each(data, function(v, k){ %>
+      <div data-id="<%=v.url%>" id="img-ads-subject">
+        <img src="http://www.xchelp.com/assets/upload/ads/<%= v.img%>">
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</script>
+
+<!--详情界面点击进去看到的相册-->
+<script type="text/template" id="tmpl-photo-list">
+  <div id="carousel-boxs">
+    <div id="photo-carousel">
+      <% _.each(data, function(v, k){ %>
+      <div>
+        <img src="http://www.xchelp.com/assets/kindeditor/attached/image/<%= v%>" alt="">
+      </div>
+      <% }); %>
+    </div>
+  </div>
+  <div id="carousel-dotss"></div>
+</script>
+
+<!-- 车系及厂商 -->
+<script type="text/template" id="tmpl-series">
+  <% if(data.merchant == ''){%>
+  <% _.each(data.series, function(vv, kk){ %>
+  <li id="series_id" data-id="<%= vv.sid %>"><%= vv.series_name %></li>
+  <% }); %>
+  <% } %>
+  <% if(data.merchant != ''){%>
+  <% _.each(data.merchant, function(v, k){ %>
+  <div class="tmpl-series"><%= v.merchant_name %></div>
+  <% _.each(data.series, function(vv, kk){ %>
+  <% if(vv.merchant_id == v.id){%>
+  <li id="series_id" data-id="<%= vv.sid %>"><%= vv.series_name %></li>
+  <% } %>
+  <% }); %>
+  <% }); %>
+  <% } %>
+</script>
+
+<!-- 车系及厂商 -->
+<script type="text/template" id="seek-tmpl-series">
+  <% if(data.merchant == ''){%>
+  <% _.each(data.series, function(vv, kk){ %>
+  <li id="series_id" data-id="<%= vv.sid %>"><%= vv.series_name %></li>
+  <% }); %>
+  <% } %>
+  <% if(data.merchant != ''){%>
+  <% _.each(data.merchant, function(v, k){ %>
+  <div class="tmpl-series"><%= v.merchant_name %></div>
+  <% _.each(data.series, function(vv, kk){ %>
+  <% if(vv.merchant_id == v.id){%>
+  <li id="series_id" data-id="<%= vv.sid %>"><%= vv.series_name %></li>
+  <% } %>
+  <% }); %>
+  <% }); %>
+  <% } %>
+</script>
+
+<!--评论列表页面-->
+<script type="text/template" id="tmpl-comment-list">
+  <% _.each(data, function(v, k){ %>
+  <div class="pinglun-warp">
+    <div class="user-names"><%= v.site_name %></div>
+    <div class="user-times"><%= v.date_time %></div>
+    <div class="pinglun-cotent"><%= v.reply_content %></div>
+  </div>
+  <% }); %>
+</script>
+
+<!-- 搜索历史记录 -->
+<script type="text/template" id="tmpl-cases-search-record">
+  <% _.each(data, function(v, k){ %>
+  <p><%= v %></p>
+  <% }); %>
+</script>
+
+<!-- 品牌LIST -->
+<script type="text/template" id="tmpl-brand">
+  <% _.each(data, function(v, k){ %>
+  <div class="tableHeader" id="itm_anchor_<%= k %>"><%= k %></div>
+  <% _.each(v, function(v2, k2){ %>
+  <li data-id="<%= v2.id %>">
+    <img src="http://www.xchelp.com/assets/upload/brand/<%= v2.brand_img %>">
+    <p><%= v2.brand_name %></p>
+  </li>
+  <% }); %>
+  <% }); %>
+</script>
+
+<!--详情界面数据-->
+<script type="text/template" id="tmpl-cases-detail">
+  <div id="cases-detail-title">
+    <h1><%= article.title %></h1>
+    <div id="cases-title-main">
+      <span><%= article.date_time %></span><span>来源：<% if(article.source == null){%>修车帮<% } %><% if(article.source != null){%><%= article.source %><% } %></span><span>作者：<%= article.site_name %></span>
+    </div>
+  </div>
+
+  <div class="cases-detail-main">
+    <p class="casesmain"> <h5>● 故障现象</h5> <%= article.trouble_phenomenon %> </p>
+  </div>
+
+  <div class="cases-detail-main">
+    <p class="casesmain"> <h5>● 故障分析</h5> <%= article.inspectional %> </p>
+  </div>
+
+  <div class="cases-detail-main">
+    <p class="casesmain"> <h5>● 故障解决</h5> <%= article.trouble_removal %> </p>
+  </div>
+
+  <% if(article.summarize != '') {%>
+  <div class="cases-detail-main">
+    <p class="casesmain"> <h5>● 回顾总结</h5> <%= article.summarize %> </p>
+  </div>
+  <% } %>
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+
+/**
+ *
+ * Horizontal Scrollbar
+ *
+ */
+
+ body,ul,li {
+	padding:0;
+	margin:0;
+	border:0;
+}
+
+body {
+	font-size:12px;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+	font-family:helvetica;
+}
+
+/*.jqmScrollPanel{ height:100%; display:block;}*/
+#thelist-left{width:120px !important; display:inline-block !important; height:auto; background:#eee !important; border-right:1px solid #bbb; position:absolute; top:0; left:0;}
+#thelist-left li{width:100px !important; padding-left:20px !important; height:30px !important; background:#eee !important; line-height:30px !important; border-bottom:1px solid #bbb;}
+#thelist-right{width:180px !important; display:inline-block !important; height:auto;position:absolute; top:0; right:0;}
+#thelist-right li{width:160px !important; padding-left:20px inherit; height:30px !important; line-height:30px !important; border-bottom:1px solid #bbb;}
+
+
+#wrapper-left {
+	position:absolute; z-index:1;
+	top:45px; bottom:48px; left:0;
+	width:40%;
+	background:#aaa;
+	overflow:auto;
+	border-right:1px solid #ccc;
+}
+
+#wrapper-right {
+	position:absolute; z-index:1;
+	top:45px; bottom:48px; right:0;
+	width:60%;
+	background:#aaa;
+	overflow:auto;
+}
+
+#scroller-left {
+	position:relative;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+
+	float:left;
+	width:100%;
+	padding:0;
+}
+
+#scroller-left ul {
+	position:relative;
+	list-style:none;
+	padding:0;
+	margin:0;
+	width:100%;
+	text-align:left;
+}
+
+#scroller-left li {
+	padding:0 10px;
+	height:40px;
+	line-height:40px;
+	border-bottom:1px solid #ccc;
+	border-top:1px solid #fff;
+	background-color:#fafafa;
+	font-size:14px;
+}
+
+#scroller-left li > a {
+	display:block;
+}
+
+
+	#scroller-right {
+	position:relative;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+
+	float:left;
+	width:100%;
+	padding:0;
+}
+
+#scroller-right ul {
+	position:relative;
+	list-style:none;
+	padding:0;
+	margin:0;
+	width:100%;
+	text-align:left;
+}
+
+#scroller-right li {
+	padding:0 10px;
+	height:40px;
+	line-height:40px;
+	border-bottom:1px solid #ccc;
+	border-top:1px solid #fff;
+	background-color:#fafafa;
+	font-size:14px;
+}
+
+#scroller-right li > a {
+	display:block;
+}
+
+.myScrollbarH {
+	position:absolute;
+	z-index:100;
+	height:8px;
+	bottom:1px;
+	left:2px;
+	right:7px
+}
+
+.myScrollbarH > div {
+	position:absolute;
+	z-index:100;
+	height:100%;
+
+	/* The following is probably what you want to customize */
+	background-image:-webkit-gradient(linear, 0 0, 100% 0, from(#a00), to(#f00));
+	background-image:-moz-linear-gradient(top, #f00, #900);
+	background-image:-o-linear-gradient(top, #f00, #900);
+
+	border:1px solid #900;
+	-webkit-background-clip:padding-box;
+	-moz-background-clip:padding-box;
+	-o-background-clip:padding-box;
+	background-clip:padding-box;
+
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-o-border-radius:4px;
+	border-radius:4px;
+
+	-webkit-box-shadow:inset 1px 1px 0 rgba(255,255,255,0.5);
+	-moz-box-shadow:inset 1px 1px 0 rgba(255,255,255,0.5);
+	-o-box-shadow:inset 1px 1px 0 rgba(255,255,255,0.5);
+	box-shadow:inset 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+
+/**
+ *
+ * Vertical Scrollbar
+ *
+ */
+.myScrollbarV {
+	position:absolute;
+	z-index:100;
+	width:8px;bottom:7px;top:2px;right:1px
+}
+
+

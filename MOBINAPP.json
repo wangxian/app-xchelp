@@ -1,0 +1,15 @@
+{
+  "orientation": "portrait",
+  "platformVersion": "3.0",
+  "icon": "icon.png",
+  "category": 2,
+  "name": "xchelp",
+  "package": "com.xchelp.app",
+  "resolution": [
+    "320x480",
+    "360x640"
+  ],
+  "startPage": "index.html",
+  "displayName": "修车帮",
+  "version": "0.9.799"
+}

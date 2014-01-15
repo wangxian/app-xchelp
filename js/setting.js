@@ -1,0 +1,1 @@
+define(function(require,exports,module){var _=require("underscore");var Backbone=require("backbone");require.async("./setting-feedback");require.async("./setting-checkversion")});

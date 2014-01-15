@@ -1,0 +1,29 @@
+/*start*/
+* {-webkit-tap-highlight-color:transparent !important; outline-style: none !important;}
+
+#start{width:320px; height:430px; padding-top:50px !important; margin:0 auto; background:#0f8fd8; text-align:center !important;}
+
+@media only screen and (max-width:480px), only screen and (max-device-width:480px){
+    #start .text{ padding-top:280px !important; vertical-align:bottom; font-size:12px; color:#fff !important; text-shadow:1px 1px #1176aa;}
+    .leadng-content{padding-top:120px !important;}
+}
+
+@media only screen and (max-width:360px), only screen and (max-device-width:360px){
+    #start .text{ padding-top:240px !important; vertical-align:bottom; font-size:12px; color:#fff !important; text-shadow:1px 1px #1176aa;}
+    .leadng-content{padding-top:60px !important;}
+}
+
+
+@media only screen and (max-width:320px), only screen and (max-device-width:320px){
+    #start .text{ padding-top:160px !important; vertical-align:bottom; font-size:12px; color:#fff !important; text-shadow:1px 1px #1176aa;}
+    .leadng-content{padding-top:20px !important;}
+}
+
+#carousel-leading{ margin-top:-30px !important;}
+#carousel-box-leading { position: relative; width: 100%; height:auto; padding:0px !important;}
+#carousel-dots-leading {z-index: 200; margin:0 auto !important; text-align:center !important;}
+#carousel-dots-leading div{ float:none !important; display:inline-block !important;width:10px !important;}
+.leading-text{width:100% !important; height:auto; display:block; padding:10px 0 !important; text-align:center !important; font-size:12px; line-height:20px;}
+.leading-text span{ font-size:18px; font-weight:bold; letter-spacing:2px;}
+#carousel-box-leading div{ text-align:center;}
+.leading-text p{width:100px !important; padding:5px 20px !important; margin:0 auto !important; background: #0f8fd8; color:#fff; font-size:12px !important;}

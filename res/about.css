@@ -1,0 +1,14 @@
+* {-webkit-tap-highlight-color:transparent !important; outline-style: none !important;}
+
+/*关于修车帮*/
+.about-content{width:100%; height:450px; padding-top:50px !important; background:rgba(240, 240, 240, 1) url(img/background.png) center top no-repeat; line-height:24px; text-align:center !important;}
+
+@media only screen and (max-width:360px), only screen and (max-device-width:360px){
+    .about-content .text{ padding-top:220px !important; vertical-align:bottom; text-shadow:1px 1px #fff;}
+}
+
+
+@media only screen and (max-width:320px), only screen and (max-device-width:320px){
+    .about-content .text{ padding-top:120px !important; vertical-align:bottom; text-shadow:1px 1px #fff;}
+}
+
